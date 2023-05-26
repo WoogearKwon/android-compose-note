@@ -1,4 +1,4 @@
-package com.woogear.compose_calculator.ui.sceen
+package com.woogear.compose_note.ui.sceen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -24,9 +23,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.woogear.compose_calculator.ui.theme.Black
-import com.woogear.compose_calculator.ui.theme.Orange
-import com.woogear.compose_calculator.ui.theme.White
+import com.woogear.compose_note.ui.theme.Black
+import com.woogear.compose_note.ui.theme.Orange
+import com.woogear.compose_note.ui.theme.White
 
 @Composable
 fun CalculatorScreen() {

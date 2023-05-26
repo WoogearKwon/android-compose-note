@@ -1,4 +1,4 @@
-package com.woogear.compose_calculator.ui.theme
+package com.woogear.compose_note.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

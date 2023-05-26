@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.woogear.compose_calculator'
+    namespace 'com.woogear.compose_note'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.woogear.compose_calculator"
+        applicationId "com.woogear.compose_note"
         minSdk 24
         targetSdk 33
         versionCode 1

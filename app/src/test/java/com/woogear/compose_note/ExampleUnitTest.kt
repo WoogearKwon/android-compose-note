@@ -1,4 +1,4 @@
-package com.woogear.compose_calculator
+package com.woogear.compose_note
 
 import org.junit.Test
 

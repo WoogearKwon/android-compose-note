@@ -1,7 +1,6 @@
-package com.woogear.compose_calculator.ui.theme
+package com.woogear.compose_note.ui.theme
 
 import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.lightColors
@@ -28,7 +27,7 @@ private val LightColorScheme = lightColors(
 )
 
 @Composable
-fun ComposecalculatorTheme(
+fun ComposeNoteTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
