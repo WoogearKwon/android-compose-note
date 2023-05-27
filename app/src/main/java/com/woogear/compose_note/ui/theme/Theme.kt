@@ -3,6 +3,7 @@ package com.woogear.compose_note.ui.theme
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
@@ -10,20 +11,21 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val LightColorScheme = lightColors(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    background = Black
+private val DarkColorPalette = darkColors(
+    primary = Purple200,
+    primaryVariant = Purple700,
+    secondary = Teal200
+)
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val LightColorPalette = lightColors(
+    primary = RetroBlue04Dark,
+    onPrimary = White01Basic,
+    background = White01Basic,
+    onBackground = Black01Basic,
+    surface = White01Basic,
+    onSurface = Black01Basic,
+    error = Red03Basic,
+    onError = White01Basic,
 )
 
 @Composable
@@ -33,7 +35,7 @@ fun ComposeNoteTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = LightColorScheme
+    val colorScheme = LightColorPalette
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
