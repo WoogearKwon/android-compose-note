@@ -8,12 +8,14 @@ import com.woogear.compose_note.ui.sceen.CategoriesScreen
 
 sealed class Route(
     val routePath: String,
-    val description: String? = null
+    val name: String = "no name",
+    val description: String = "no description"
     ) {
-    fun name(): String = javaClass.simpleName
 
-    object Categories : Route(routePath = "categories") {
-
+    object Categories : Route(
+        routePath = "categories",
+        "Categories",
+    ) {
         fun NavGraphBuilder.categoriesScreen(navController: NavController) {
             composable(route = routePath) {
                 CategoriesScreen(
@@ -26,7 +28,11 @@ sealed class Route(
         }
     }
 
-    object ComponentCatalog : Route(routePath = "componentCatalog") {
+    object ComponentCatalog : Route(
+        routePath = "component_catalogs",
+        name = "Component Catalogs",
+        description = "Compose UI Components Catalogs"
+    ) {
         fun NavGraphBuilder.catalogScreen(navController: NavController) {
             composable(route = routePath) {
 
@@ -34,7 +40,11 @@ sealed class Route(
         }
     }
 
-    object CanvasPainting : Route(routePath = "canvasPainting") {
+    object CanvasPainting : Route(
+        routePath = "canvas_drawings",
+        name = "Canvas Drawings",
+        description = "Custom UI Components on Canvas"
+    ) {
         fun NavGraphBuilder.paintingScreen(navController: NavController) {
             composable(route = routePath) {
 
