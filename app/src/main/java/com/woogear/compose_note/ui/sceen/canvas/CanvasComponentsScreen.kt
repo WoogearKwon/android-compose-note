@@ -27,7 +27,7 @@ import com.woogear.compose_note.ui.theme.RetroBlue03Basic
 import com.woogear.compose_note.ui.theme.White
 
 @Composable
-fun CanvasComponentsPage(
+fun CanvasComponentsScreen(
     viewModel: CanvasComponentsViewModel,
     onClickExit: () -> Unit,
     onClickComponent: (path: String) -> Unit,
