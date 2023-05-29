@@ -1,4 +1,4 @@
-package com.woogear.compose_note.ui.sceen
+package com.woogear.compose_note.ui.sceen.category
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,7 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.woogear.compose_note.ui.navigation.Route
-import com.woogear.compose_note.ui.theme.Black
+import com.woogear.compose_note.ui.theme.White
 
 @Composable
 fun CategoriesScreen(
@@ -30,13 +31,20 @@ fun CategoriesScreen(
     viewModel: CategoriesViewModel,
     onClickCategory: (path: String) -> Unit,
 ) {
-    Scaffold {
-        Column(modifier = Modifier.padding(it)) {
-            Text(
-                text = "Categories",
-                color = Black,
-                fontSize = 22.sp
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = "Categories",
+                        color = White,
+                        fontSize = 22.sp
+                    )
+                }
             )
+        }
+    ) {
+        Column(modifier = Modifier.padding(it)) {
             Categories(viewModel.routes, onClickCategory)
         }
     }

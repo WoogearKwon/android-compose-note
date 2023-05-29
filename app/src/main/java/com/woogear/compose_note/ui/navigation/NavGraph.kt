@@ -4,7 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.woogear.compose_note.ui.navigation.Route.CanvasPainting.paintingScreen
+import com.woogear.compose_note.ui.navigation.Route.CanvasChart.canvasChart
+import com.woogear.compose_note.ui.navigation.Route.CanvasPainting.canvasScreen
 import com.woogear.compose_note.ui.navigation.Route.Categories.categoriesScreen
 import com.woogear.compose_note.ui.navigation.Route.ComponentCatalog.catalogScreen
 
@@ -21,6 +22,7 @@ fun AppNavHost(
     ) {
         categoriesScreen(navController = navController)
         catalogScreen(navController = navController)
-        paintingScreen(navController = navController)
+        canvasScreen(navController = navController)
+        canvasChart(navController = navController)
     }
 }

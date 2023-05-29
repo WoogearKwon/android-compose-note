@@ -4,7 +4,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.woogear.compose_note.ui.sceen.CategoriesScreen
+import com.woogear.compose_note.ui.sceen.canvas.CanvasComponentsPage
+import com.woogear.compose_note.ui.sceen.category.CategoriesScreen
 
 sealed class Route(
     val routePath: String,
@@ -45,7 +46,24 @@ sealed class Route(
         name = "Canvas Drawings",
         description = "Custom UI Components on Canvas"
     ) {
-        fun NavGraphBuilder.paintingScreen(navController: NavController) {
+        fun NavGraphBuilder.canvasScreen(navController: NavController) {
+            composable(route = routePath) {
+                CanvasComponentsPage(
+                    viewModel = hiltViewModel(),
+                    onClickExit = navController::popBackStack,
+                    onClickComponent = { path ->
+                        navController.navigate(path)
+                    })
+            }
+        }
+    }
+
+    object CanvasChart : Route(
+        routePath = "canvas_chart",
+        name = "Canvas Chart",
+        description = "3 Types of Chart Component Drawn on Canvas"
+    ) {
+        fun NavGraphBuilder.canvasChart(navController: NavController) {
             composable(route = routePath) {
 
             }
