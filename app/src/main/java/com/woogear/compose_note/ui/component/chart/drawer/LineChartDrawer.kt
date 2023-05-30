@@ -110,7 +110,9 @@ class LineChartDrawer(
     ) = with(this) {
         val offsetsNotNull = offsets.filterNotNull()
         val focused = chartHelper.focusIndex == focusIndex
-        val halfWidth = pointerDiameter.toPx() / 2f
+        val optimalWidth = if (pointerDiameter.toPx() > chartHelper.maxItemWidth)
+            chartHelper.maxItemWidth else pointerDiameter.toPx()
+        val halfWidth = optimalWidth / 2f
         val radius = pointerRadius.toPx()
 
         offsetsNotNull.forEachIndexed { index, offset ->

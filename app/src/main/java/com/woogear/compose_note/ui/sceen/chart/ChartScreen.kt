@@ -112,13 +112,13 @@ private fun FocusButtons(onFocusChanged: (Int) -> Unit) {
         Button(
             onClick = { onFocusChanged.invoke(WooChartDrawer.CHART_INDEX_0) },
         ) {
-            Text("focus 1")
+            Text("FOCUS 1")
         }
         Button(
             modifier = Modifier.padding(start = 20.dp),
             onClick = { onFocusChanged.invoke(WooChartDrawer.CHART_INDEX_1) },
         ) {
-            Text("focus 2")
+            Text("FOCUS 2")
         }
     }
 }
@@ -166,18 +166,18 @@ private fun DurationButtons(onDurationChanged: (WooChartDuration) -> Unit) {
             Text("WEEK")
         }
         Button(
-            modifier = Modifier.padding(start = 20.dp),
+            modifier = Modifier.padding(start = 10.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFA1FFA4)),
             onClick = { onDurationChanged.invoke(WooChartDuration.MONTH) },
         ) {
             Text("MONTH")
         }
         Button(
-            modifier = Modifier.padding(start = 20.dp),
+            modifier = Modifier.padding(start = 10.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFA1FFA4)),
             onClick = { onDurationChanged.invoke(WooChartDuration.SIX_MONTHS) },
         ) {
-            Text("SIX_MONTHS")
+            Text("6_MONTHS")
         }
     }
 }

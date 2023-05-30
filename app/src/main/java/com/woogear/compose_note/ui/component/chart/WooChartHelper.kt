@@ -14,6 +14,7 @@ data class WooChartHelper(
     val labels = mutableListOf<WooChartLabel>()
     val offsets0: List<Offset?>
     val offsets1: MutableList<Offset?>?
+    val maxItemWidth: Float
 
     private val maxValue: Float
     private val rangeRatio: Float
@@ -28,6 +29,9 @@ data class WooChartHelper(
 
         val horizontalMargin = chartSize.width * HORIZONTAL_MARGIN_RATIO
         val totalMargin = horizontalMargin * 2
+        val drawableWidth = chartSize.width - totalMargin
+        maxItemWidth = (drawableWidth / duration.valuesPerPage) * 0.8f
+
         val labelDistance = (chartSize.width - totalMargin) / (duration.labelsPerPage - 1)
 
         for (i in 0 until duration.labelsPerPage) {

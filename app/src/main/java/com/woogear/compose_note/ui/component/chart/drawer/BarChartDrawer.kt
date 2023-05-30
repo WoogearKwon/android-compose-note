@@ -17,6 +17,7 @@ import com.woogear.compose_note.ui.component.chart.drawer.WooChartDrawer.Compani
 
 class BarChartDrawer(
     private val barWidth: Dp = 10.dp,
+    private val barRadius: Dp = 4.dp,
     private val barColor: Color = Color(0xFF5C5C5C),
 ) : WooChartDrawer {
 
@@ -34,8 +35,10 @@ class BarChartDrawer(
         pointerOffset: Offset?,
         onDrawSelectionMarker: (offset: Offset, index: Int) -> Unit,
     ) = with(drawScope) {
-        val halfWidth = barWidth.toPx() / 2
-        val topRadius = 4.dp.toPx()
+        val optimalWidth = if (barWidth.toPx() > chartHelper.maxItemWidth)
+            chartHelper.maxItemWidth else barWidth.toPx()
+        val halfWidth = optimalWidth / 2
+        val topRadius = barRadius.toPx()
         val cornerRadius = CornerRadius(topRadius, topRadius)
 
         drawSelectionMarker(canvas, chartHelper, pointerOffset, true)

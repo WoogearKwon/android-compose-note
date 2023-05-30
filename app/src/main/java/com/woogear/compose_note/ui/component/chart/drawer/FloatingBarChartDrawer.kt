@@ -31,7 +31,9 @@ class FloatingBarChartDrawer(
         pointerOffset: Offset?,
         onDrawSelectionMarker: (offset: Offset, index: Int) -> Unit,
     ) = with(drawScope) {
-        val halfWidth = barWidth.toPx() / 2
+        val optimalWidth = if (barWidth.toPx() > chartHelper.maxItemWidth)
+            chartHelper.maxItemWidth else barWidth.toPx()
+        val halfWidth = optimalWidth / 2
         val radius = barRadius.toPx()
 
         drawSelectionMarker(canvas, chartHelper, pointerOffset, true)
