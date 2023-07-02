@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.woogear.compose_note.ui.component.chart.ChartProcessor
+import com.woogear.compose_note.ui.component.chart.ChartStatus
 
 class FloatingBarChartDrawer(
     private val barWidth: Dp = 10.dp,
@@ -53,13 +54,11 @@ class FloatingBarChartDrawer(
 
             tapOffset.checkSelection(offset, halfWidth, index, onDrawSelectionMarker)
 
-            val n = index % 3
-            val color = when (n) {
-                0 -> colorSafe
-                1 -> colorAlert
-                else -> colorBad
+            paint.color = when (chartProcessor.status[index]) {
+                ChartStatus.GOOD -> colorSafe
+                ChartStatus.BAD -> colorBad
+                else -> colorAlert
             }
-//            paint.color = when (chartProcessor)
 
             canvas.drawRoundRect(
                 left = offset.x - halfWidth,

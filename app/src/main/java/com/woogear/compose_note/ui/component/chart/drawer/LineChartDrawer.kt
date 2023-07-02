@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.woogear.compose_note.ui.component.chart.ChartProcessor
+import com.woogear.compose_note.ui.component.chart.ChartStatus
 import com.woogear.compose_note.ui.component.chart.drawer.ChartDrawer.Companion.CHART_INDEX_0
 import com.woogear.compose_note.ui.component.chart.drawer.ChartDrawer.Companion.CHART_INDEX_1
 
@@ -102,16 +103,16 @@ class LineChartDrawer(
 
     private fun DrawScope.drawPoints(
         canvas: Canvas,
-        chartHelper: ChartProcessor,
+        chartProcessor: ChartProcessor,
         offsets: List<Offset?>,
         focusIndex: Int,
         tapOffset: Offset?,
         onDrawSelectionMarker: (offset: Offset, index: Int) -> Unit,
     ) = with(this) {
         val offsetsNotNull = offsets.filterNotNull()
-        val focused = chartHelper.focusIndex == focusIndex
-        val optimalWidth = if (pointerDiameter.toPx() > chartHelper.maxItemWidth)
-            chartHelper.maxItemWidth else pointerDiameter.toPx()
+        val focused = chartProcessor.focusIndex == focusIndex
+        val optimalWidth = if (pointerDiameter.toPx() > chartProcessor.maxItemWidth)
+            chartProcessor.maxItemWidth else pointerDiameter.toPx()
         val halfWidth = optimalWidth / 2f
         val radius = pointerRadius.toPx()
 
@@ -125,11 +126,10 @@ class LineChartDrawer(
             pointerPaint.color = outerPointerColor
             canvas.drawPointer(offset, outerHalfWidth, outerRadius, pointerPaint)
 
-            val n = index % 3
-            val paintColor = when (n) {
-                0 -> colorSafe
-                1 -> colorAlert
-                else -> colorBad
+            val paintColor = when (chartProcessor.status[index]) {
+                ChartStatus.GOOD -> colorSafe
+                ChartStatus.BAD -> colorBad
+                else -> colorAlert
             }
             pointerPaint.color = if (focused) paintColor else unfocusedColor
             canvas.drawPointer(offset, halfWidth, radius, pointerPaint)
