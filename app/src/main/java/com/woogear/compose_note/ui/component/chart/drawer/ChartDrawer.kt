@@ -18,7 +18,7 @@ interface ChartDrawer {
     fun drawLabelGroup(
         canvas: Canvas,
         drawScope: DrawScope,
-        chartHelper: ChartProcessor,
+        chartProcessor: ChartProcessor,
         lineWidth: Dp = 1.dp,
         lineColor: Color = Color(0xFFF5F5F5),
     ) {
@@ -31,8 +31,8 @@ interface ChartDrawer {
                 textAlign = android.graphics.Paint.Align.CENTER
             }
 
-            chartHelper.labels.forEach { label ->
-                val dy = chartHelper.dyBaseLine
+            chartProcessor.labels.forEach { label ->
+                val dy = chartProcessor.dyBaseLine
                 drawLine(
                     start = Offset(label.dx, 0f),
                     end = Offset(label.dx, dy),
@@ -49,7 +49,7 @@ interface ChartDrawer {
     fun drawDangerArea(
         drawScope: DrawScope,
         canvas: Canvas,
-        chartHelper: ChartProcessor,
+        chartProcessor: ChartProcessor,
         areaRadius: Dp = 8.dp,
         areaColor: Color = Color(0xFFFAFAFA),
         safeLimitHigh: Float? = null,
@@ -61,11 +61,11 @@ interface ChartDrawer {
             color = areaColor
         }
 
-        val dySafeLimitHigh = chartHelper.getDyFrom(safeLimitHigh)
+        val dySafeLimitHigh = chartProcessor.getDyFrom(safeLimitHigh)
         if (dySafeLimitHigh > 0f) {
             canvas.drawRoundRect(
                 left = 0f,
-                right = chartHelper.chartSize.width,
+                right = chartProcessor.chartSize.width,
                 top = 0f,
                 bottom = dySafeLimitHigh,
                 radiusX = radius,
@@ -75,15 +75,15 @@ interface ChartDrawer {
         }
 
         if (safeLimitLow == null) return
-        val dyBaseLine = chartHelper.dyBaseLine
-        val dySafeLimitLow = chartHelper.getDyFrom(safeLimitLow)
+        val dyBaseLine = chartProcessor.dyBaseLine
+        val dySafeLimitLow = chartProcessor.getDyFrom(safeLimitLow)
         if (dySafeLimitLow > dyBaseLine) return
 
         canvas.drawRoundRect(
             left = 0f,
-            right = chartHelper.chartSize.width,
+            right = chartProcessor.chartSize.width,
             top = dySafeLimitLow,
-            bottom = chartHelper.dyBaseLine,
+            bottom = chartProcessor.dyBaseLine,
             radiusX = radius,
             radiusY = radius,
             paint = paint
@@ -92,7 +92,7 @@ interface ChartDrawer {
 
     fun DrawScope.drawSelectionMarker(
         canvas: Canvas,
-        chartHelper: ChartProcessor,
+        chartProcessor: ChartProcessor,
         pointerOffset: Offset?,
         isFocused: Boolean,
         markerWidth: Dp = 2.dp,
@@ -106,7 +106,7 @@ interface ChartDrawer {
             strokeWidth = markerWidth.toPx()
         }
         val p1 = Offset(pointerOffset.x, 0f)
-        val p2 = Offset(pointerOffset.x, chartHelper.dyBaseLine)
+        val p2 = Offset(pointerOffset.x, chartProcessor.dyBaseLine)
         canvas.drawLine(p1, p2, paint)
     }
 

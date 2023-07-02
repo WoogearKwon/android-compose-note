@@ -83,13 +83,13 @@ class LineChartDrawer(
 
     private fun DrawScope.drawLineAndShader(
         canvas: Canvas,
-        chartHelper: ChartProcessor,
+        chartProcessor: ChartProcessor,
         pathPair: Pair<Path, Path>,
         pointerOffset: Offset?,
         index: Int,
     ) = with(this) {
         val lineThickness = lineThickness.toPx()
-        val isFocused = chartHelper.focusIndex == index
+        val isFocused = chartProcessor.focusIndex == index
         val lineColor = if (isFocused) lineColor else unfocusedColor
         linePainter.strokeWidth = lineThickness
         linePainter.color = lineColor
@@ -98,7 +98,7 @@ class LineChartDrawer(
             drawPath(pathPair.second, shaderColor)
         }
         canvas.drawPath(pathPair.first, linePainter)
-        drawSelectionMarker(canvas, chartHelper, pointerOffset, isFocused)
+        drawSelectionMarker(canvas, chartProcessor, pointerOffset, isFocused)
     }
 
     private fun DrawScope.drawPoints(

@@ -27,7 +27,7 @@ fun EasyChart(
     var pointerOffset by remember { mutableStateOf<Offset?>(null) }
 
     var chartSize by remember { mutableStateOf(Size(0f, 0f)) }
-    val chartHelper by remember(chartData, chartSize) {
+    val chartProcessor by remember(chartData, chartSize) {
         mutableStateOf(ChartProcessor(chartSize, duration, chartData))
     }
     Canvas(
@@ -42,23 +42,23 @@ fun EasyChart(
         chartSize = size
 
         drawIntoCanvas { canvas ->
-            chartHelper.setFocusIndex(focusIndex)
+            chartProcessor.setFocusIndex(focusIndex)
             chartDrawer.drawDangerArea(
                 canvas = canvas,
                 drawScope = this,
-                chartHelper = chartHelper,
+                chartProcessor = chartProcessor,
                 safeLimitHigh = 120f,
                 safeLimitLow = 50f
             )
             chartDrawer.drawLabelGroup(
                 canvas = canvas,
                 drawScope = this,
-                chartHelper = chartHelper
+                chartProcessor = chartProcessor
             )
             chartDrawer.drawChart(
                 canvas = canvas,
                 drawScope = this,
-                chartProcessor = chartHelper,
+                chartProcessor = chartProcessor,
                 tapOffset = tapOffset,
                 pointerOffset = pointerOffset,
             ) { offset, index ->
