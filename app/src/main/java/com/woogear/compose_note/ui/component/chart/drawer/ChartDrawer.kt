@@ -113,7 +113,7 @@ interface ChartDrawer {
     fun drawChart(
         canvas: Canvas,
         drawScope: DrawScope,
-        chartHelper: ChartProcessor,
+        chartProcessor: ChartProcessor,
         tapOffset: Offset?,
         pointerOffset: Offset?,
         onDrawSelectionMarker: (offset: Offset, index: Int) -> Unit,

@@ -30,21 +30,21 @@ class BarChartDrawer(
     override fun drawChart(
         canvas: Canvas,
         drawScope: DrawScope,
-        chartHelper: ChartProcessor,
+        chartProcessor: ChartProcessor,
         tapOffset: Offset?,
         pointerOffset: Offset?,
         onDrawSelectionMarker: (offset: Offset, index: Int) -> Unit,
     ) = with(drawScope) {
-        val optimalWidth = if (barWidth.toPx() > chartHelper.maxItemWidth)
-            chartHelper.maxItemWidth else barWidth.toPx()
+        val optimalWidth = if (barWidth.toPx() > chartProcessor.maxItemWidth)
+            chartProcessor.maxItemWidth else barWidth.toPx()
         val halfWidth = optimalWidth / 2
         val topRadius = barRadius.toPx()
         val cornerRadius = CornerRadius(topRadius, topRadius)
 
-        drawSelectionMarker(canvas, chartHelper, pointerOffset, true)
+        drawSelectionMarker(canvas, chartProcessor, pointerOffset, true)
 
-        val offsets = if (chartHelper.focusIndex == CHART_INDEX_0) chartHelper.offsets0
-        else chartHelper.offsets1
+        val offsets = if (chartProcessor.focusIndex == CHART_INDEX_0) chartProcessor.offsets0
+        else chartProcessor.offsets1
         offsets?.forEachIndexed { index, offset ->
             if (offset == null) return@forEachIndexed
 
@@ -52,7 +52,7 @@ class BarChartDrawer(
 
             val rect = Rect(
                 topLeft = Offset(offset.x - halfWidth, offset.y),
-                bottomRight = Offset(offset.x + halfWidth, chartHelper.dyBaseLine)
+                bottomRight = Offset(offset.x + halfWidth, chartProcessor.dyBaseLine)
             )
             val roundRect = RoundRect(
                 rect = rect,

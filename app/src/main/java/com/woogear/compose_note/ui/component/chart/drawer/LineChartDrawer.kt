@@ -40,26 +40,26 @@ class LineChartDrawer(
     override fun drawChart(
         canvas: Canvas,
         drawScope: DrawScope,
-        chartHelper: ChartProcessor,
+        chartProcessor: ChartProcessor,
         tapOffset: Offset?,
         pointerOffset: Offset?,
         onDrawSelectionMarker: (offset: Offset, index: Int) -> Unit,
     ) = with(drawScope) {
-        val focusedIndex = if (chartHelper.focusIndex == CHART_INDEX_0) CHART_INDEX_0 else CHART_INDEX_1
+        val focusedIndex = if (chartProcessor.focusIndex == CHART_INDEX_0) CHART_INDEX_0 else CHART_INDEX_1
         val unfocusedIndex = if (focusedIndex == CHART_INDEX_0) CHART_INDEX_1 else CHART_INDEX_0
 
-        val offsets0 = chartHelper.offsets0
-        val offsets1 = chartHelper.offsets1
+        val offsets0 = chartProcessor.offsets0
+        val offsets1 = chartProcessor.offsets1
 
         val focusedOffsets = if (focusedIndex == CHART_INDEX_0) offsets0 else offsets1
         val unfocusedOffsets = (if (focusedIndex == CHART_INDEX_0) offsets1 else offsets0)
 
         if (unfocusedOffsets != null) {
-            val pathPair1 = chartHelper.calculatePaths(unfocusedOffsets)
-            drawLineAndShader(canvas, chartHelper, pathPair1, pointerOffset, unfocusedIndex)
+            val pathPair1 = chartProcessor.calculatePaths(unfocusedOffsets)
+            drawLineAndShader(canvas, chartProcessor, pathPair1, pointerOffset, unfocusedIndex)
             drawPoints(
                 canvas,
-                chartHelper,
+                chartProcessor,
                 unfocusedOffsets,
                 unfocusedIndex,
                 tapOffset,
@@ -68,11 +68,11 @@ class LineChartDrawer(
         }
 
         if (focusedOffsets == null) return
-        val pathPair2 = chartHelper.calculatePaths(focusedOffsets)
-        drawLineAndShader(canvas, chartHelper, pathPair2, pointerOffset, focusedIndex)
+        val pathPair2 = chartProcessor.calculatePaths(focusedOffsets)
+        drawLineAndShader(canvas, chartProcessor, pathPair2, pointerOffset, focusedIndex)
         drawPoints(
             canvas,
-            chartHelper,
+            chartProcessor,
             focusedOffsets,
             focusedIndex,
             tapOffset,

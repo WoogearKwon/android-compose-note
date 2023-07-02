@@ -26,21 +26,22 @@ class FloatingBarChartDrawer(
     override fun drawChart(
         canvas: Canvas,
         drawScope: DrawScope,
-        chartHelper: ChartProcessor,
+        chartProcessor: ChartProcessor,
         tapOffset: Offset?,
         pointerOffset: Offset?,
         onDrawSelectionMarker: (offset: Offset, index: Int) -> Unit,
     ) = with(drawScope) {
-        val optimalWidth = if (barWidth.toPx() > chartHelper.maxItemWidth)
-            chartHelper.maxItemWidth else barWidth.toPx()
+        val optimalWidth = if (barWidth.toPx() > chartProcessor.maxItemWidth)
+            chartProcessor.maxItemWidth else barWidth.toPx()
         val halfWidth = optimalWidth / 2
         val radius = barRadius.toPx()
 
-        drawSelectionMarker(canvas, chartHelper, pointerOffset, true)
+        drawSelectionMarker(canvas, chartProcessor, pointerOffset, true)
 
-        val offsets1 = chartHelper.offsets0
-        val offsets2 =
-            chartHelper.offsets1 ?: throw IllegalStateException("offset2 should not be null")
+        val offsets1 = chartProcessor.offsets0
+        val offsets2 =chartProcessor.offsets1
+
+        if (offsets1 == null || offsets2 == null) return@with
 
         offsets1.forEachIndexed { index, offset ->
             if (offset == null) return@forEachIndexed
@@ -58,7 +59,7 @@ class FloatingBarChartDrawer(
                 1 -> colorAlert
                 else -> colorBad
             }
-            paint.color = color
+//            paint.color = when (chartProcessor)
 
             canvas.drawRoundRect(
                 left = offset.x - halfWidth,

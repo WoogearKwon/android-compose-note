@@ -8,34 +8,59 @@ data class ChartData(
     val range: Float
     val rangeRatio: Float
     val hasDoubleValue: Boolean
+    val isFirstValueEmpty: Boolean
+    val isSecondValueEmpty: Boolean
 
     init {
-        require(points.isNotEmpty()) { "Points should have at least one item. But it's empty" }
-
         val values = points.map { it.value }
         val values2 = points.map { it.value2 }
         val maxValue1 = values.maxByOrNull { it ?: 0f }
-            ?: throw IllegalStateException("All items are null")
         val minValue1 = values.minOrNull()
-            ?: throw IllegalStateException("All items are null")
+            isFirstValueEmpty = maxValue1 == null
         val maxValue2: Float? = values2.maxByOrNull { it ?: 0f }
         val minValue2: Float? = values2.minOrNull()
+        isSecondValueEmpty = maxValue2 == null
 
-        maxValue = if (maxValue2 == null) maxValue1 else maxOf(maxValue1, maxValue2)
-        minValue = if (minValue2 == null) minValue1 else minOf(minValue1, minValue2)
+        maxValue = getMaxValueOf(maxValue1, maxValue2)
+        minValue = getMinValueOf(minValue1, minValue2)
         range = maxValue - minValue
         rangeRatio = minValue / maxValue
         hasDoubleValue = maxValue2 != null
+    }
 
-        println("woogear max = $maxValue :: min = $minValue")
+    private fun getMaxValueOf(maxValue1: Float?, maxValue2: Float?): Float {
+        if (maxValue1 != null && maxValue2 != null) {
+            return maxOf(maxValue1, maxValue2)
+        }
+
+        return (maxValue1 ?: maxValue2) ?: 0f
+    }
+
+    private fun getMinValueOf(minValue1: Float?, minValue2: Float?): Float {
+        if (minValue1 != null && minValue2 != null) {
+            return minOf(minValue1, minValue2)
+        }
+
+        return (minValue1 ?: minValue2) ?: 0f
+    }
+
+    companion object {
+        val EMPTY = ChartData(listOf())
     }
 }
 
 data class ChartPoint(
     val value: Float? = null,
     val value2: Float? = null,
+    val status: ChartStatus? = null,
     val label: String,
 )
+
+enum class ChartStatus(val score: Int) {
+    GOOD(3),
+    ALERT(2),
+    BAD(1)
+}
 
 private fun <T : Comparable<T>> Iterable<T?>.minOrNull(): T? {
     val iterator = iterator()

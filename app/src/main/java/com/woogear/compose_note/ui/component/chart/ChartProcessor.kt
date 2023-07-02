@@ -12,58 +12,27 @@ data class ChartProcessor(
 ) {
     val dyBaseLine: Float = chartSize.height * BASE_LINE_RATIO
     val labels = mutableListOf<ChartLabel>()
-    val offsets0: List<Offset?>
-    val offsets1: MutableList<Offset?>?
+    val offsets0: MutableList<Offset?>? =
+        if (chartData.isFirstValueEmpty) null else mutableListOf()
+    val offsets1: MutableList<Offset?>? =
+        if (chartData.isSecondValueEmpty) null else mutableListOf()
+    val allDx = mutableListOf<Float>()
+    val status = mutableListOf<ChartStatus?>()
     val maxItemWidth: Float
 
-    private val maxValue: Float
-    private val rangeRatio: Float
-    private val valueRange: Float
+    private val maxValue: Float = chartData.maxValue
+    private val rangeRatio: Float = chartData.rangeRatio
+    private val valueRange: Float = chartData.range
+    private val horizontalMargin = chartSize.width * HORIZONTAL_MARGIN_RATIO
+    private val totalMargin = horizontalMargin * 2
+    private val drawableWidth = chartSize.width - totalMargin
 
     init {
-        offsets0 = mutableListOf()
-        offsets1 = if (chartData.hasDoubleValue) mutableListOf() else null
-        maxValue = chartData.maxValue
-        rangeRatio = chartData.rangeRatio
-        valueRange = chartData.range
-
-        val horizontalMargin = chartSize.width * HORIZONTAL_MARGIN_RATIO
-        val totalMargin = horizontalMargin * 2
-        val drawableWidth = chartSize.width - totalMargin
         maxItemWidth = (drawableWidth / duration.valuesPerPage) * 0.8f
 
-        val labelDistance = (chartSize.width - totalMargin) / (duration.labelsPerPage - 1)
-
-        for (i in 0 until duration.labelsPerPage) {
-            val dx = labelDistance * i + horizontalMargin
-            val index = i * duration.valueInterval
-            val name = chartData.points[index].label
-            labels.add(ChartLabel(dx, name))
-        }
-
-        val drawableHeight = dyBaseLine * chartData.rangeRatio
-        val dyMax = (dyBaseLine - drawableHeight) / 2
-        val valueDistance = (chartSize.width - totalMargin) / (duration.valuesPerPage - 1)
-
-        chartData.points.forEachIndexed { index, chartPoint ->
-            val dx = horizontalMargin + (valueDistance * index)
-
-            if (chartPoint.value != null) {
-                val ratio = (chartData.maxValue - chartPoint.value) / chartData.range
-                val dy = dyMax + (drawableHeight * ratio)
-                offsets0.add(Offset(dx, dy))
-            } else {
-                offsets0.add(null)
-            }
-
-            if (offsets1 == null) return@forEachIndexed
-            if (chartPoint.value2 != null) {
-                val ratio = (chartData.maxValue - chartPoint.value2) / chartData.range
-                val dy = dyMax + (drawableHeight * ratio)
-                offsets1.add(Offset(dx, dy))
-            } else {
-                offsets1.add(null)
-            }
+        if (chartData != ChartData.EMPTY) {
+            calculateLabelPositions()
+            calculateOffsets()
         }
     }
 
@@ -73,6 +42,7 @@ data class ChartProcessor(
     fun setFocusIndex(index: Int) {
         focusIndex = index
     }
+
 
     fun calculatePaths(offsets: List<Offset?>): Pair<Path, Path> {
         val baseLine: Float = dyBaseLine
@@ -108,6 +78,48 @@ data class ChartProcessor(
         val ratio = (maxValue - value) / valueRange
 
         return dyMax + (drawableHeight * ratio)
+    }
+
+    private fun calculateLabelPositions() {
+        val labelDistance = (chartSize.width - totalMargin) / (duration.labelsPerPage - 1)
+
+        for (i in 0 until duration.labelsPerPage) {
+            val dx = labelDistance * i + horizontalMargin
+            val index = i * duration.valueInterval
+            val name = chartData.points[index].label
+            labels.add(ChartLabel(dx, name))
+        }
+    }
+
+    private fun calculateOffsets() {
+        val drawableHeight = dyBaseLine * rangeRatio
+        val dyMax = (dyBaseLine - drawableHeight) / 2
+        val valueDistance = (chartSize.width - totalMargin) / (duration.valuesPerPage - 1)
+
+        chartData.points.forEachIndexed { index, chartPoint ->
+            val dx = horizontalMargin + (valueDistance * index)
+            allDx.add(dx)
+            status.add(chartPoint.status)
+
+            if (offsets0 != null) {
+                if (chartPoint.value != null) {
+                    val ratio = (maxValue - chartPoint.value) / valueRange
+                    val dy = dyMax + (drawableHeight * ratio)
+                    offsets0.add(Offset(dx, dy))
+                } else {
+                    offsets0.add(null)
+                }
+            }
+
+            if (offsets1 == null) return@forEachIndexed
+            if (chartPoint.value2 != null) {
+                val ratio = (maxValue - chartPoint.value2) / valueRange
+                val dy = dyMax + (drawableHeight * ratio)
+                offsets1.add(Offset(dx, dy))
+            } else {
+                offsets1.add(null)
+            }
+        }
     }
 
     private fun <T, R : Any> Iterable<T>.lastNotNull(transform: (T) -> R?): R {

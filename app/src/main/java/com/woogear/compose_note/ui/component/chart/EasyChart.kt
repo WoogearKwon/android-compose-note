@@ -58,7 +58,7 @@ fun EasyChart(
             chartDrawer.drawChart(
                 canvas = canvas,
                 drawScope = this,
-                chartHelper = chartHelper,
+                chartProcessor = chartHelper,
                 tapOffset = tapOffset,
                 pointerOffset = pointerOffset,
             ) { offset, index ->
