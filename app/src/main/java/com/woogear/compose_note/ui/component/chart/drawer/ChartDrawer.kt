@@ -11,14 +11,14 @@ import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.woogear.compose_note.ui.component.chart.WooChartHelper
+import com.woogear.compose_note.ui.component.chart.ChartProcessor
 
-interface WooChartDrawer {
+interface ChartDrawer {
 
     fun drawLabelGroup(
         canvas: Canvas,
         drawScope: DrawScope,
-        chartHelper: WooChartHelper,
+        chartHelper: ChartProcessor,
         lineWidth: Dp = 1.dp,
         lineColor: Color = Color(0xFFF5F5F5),
     ) {
@@ -49,7 +49,7 @@ interface WooChartDrawer {
     fun drawDangerArea(
         drawScope: DrawScope,
         canvas: Canvas,
-        chartHelper: WooChartHelper,
+        chartHelper: ChartProcessor,
         areaRadius: Dp = 8.dp,
         areaColor: Color = Color(0xFFFAFAFA),
         safeLimitHigh: Float? = null,
@@ -92,7 +92,7 @@ interface WooChartDrawer {
 
     fun DrawScope.drawSelectionMarker(
         canvas: Canvas,
-        chartHelper: WooChartHelper,
+        chartHelper: ChartProcessor,
         pointerOffset: Offset?,
         isFocused: Boolean,
         markerWidth: Dp = 2.dp,
@@ -113,7 +113,7 @@ interface WooChartDrawer {
     fun drawChart(
         canvas: Canvas,
         drawScope: DrawScope,
-        chartHelper: WooChartHelper,
+        chartHelper: ChartProcessor,
         tapOffset: Offset?,
         pointerOffset: Offset?,
         onDrawSelectionMarker: (offset: Offset, index: Int) -> Unit,

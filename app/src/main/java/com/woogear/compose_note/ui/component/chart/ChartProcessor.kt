@@ -3,15 +3,15 @@ package com.woogear.compose_note.ui.component.chart
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Path
-import com.woogear.compose_note.ui.component.chart.drawer.WooChartDrawer.Companion.CHART_INDEX_0
+import com.woogear.compose_note.ui.component.chart.drawer.ChartDrawer.Companion.CHART_INDEX_0
 
-data class WooChartHelper(
+data class ChartProcessor(
     val chartSize: Size,
-    val duration: WooChartDuration,
-    val chartData: WooChartData,
+    val duration: ChartDuration,
+    val chartData: ChartData,
 ) {
     val dyBaseLine: Float = chartSize.height * BASE_LINE_RATIO
-    val labels = mutableListOf<WooChartLabel>()
+    val labels = mutableListOf<ChartLabel>()
     val offsets0: List<Offset?>
     val offsets1: MutableList<Offset?>?
     val maxItemWidth: Float
@@ -38,7 +38,7 @@ data class WooChartHelper(
             val dx = labelDistance * i + horizontalMargin
             val index = i * duration.valueInterval
             val name = chartData.points[index].label
-            labels.add(WooChartLabel(dx, name))
+            labels.add(ChartLabel(dx, name))
         }
 
         val drawableHeight = dyBaseLine * chartData.rangeRatio
@@ -130,12 +130,12 @@ data class WooChartHelper(
     }
 }
 
-data class WooChartLabel(
+data class ChartLabel(
     val dx: Float,
     val name: String,
 )
 
-enum class WooChartDuration(
+enum class ChartDuration(
     val valuesPerPage: Int,
     val labelsPerPage: Int,
     val pageCount: Int,

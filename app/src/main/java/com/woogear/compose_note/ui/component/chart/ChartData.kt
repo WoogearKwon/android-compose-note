@@ -1,6 +1,6 @@
 package com.woogear.compose_note.ui.component.chart
 
-data class WooChartData(
+data class ChartData(
     val points: List<ChartPoint>,
 ) {
     val maxValue: Float

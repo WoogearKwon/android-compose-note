@@ -13,14 +13,14 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.input.pointer.pointerInput
-import com.woogear.compose_note.ui.component.chart.drawer.WooChartDrawer
+import com.woogear.compose_note.ui.component.chart.drawer.ChartDrawer
 
 @Composable
-fun WooChart(
+fun EasyChart(
     modifier: Modifier = Modifier,
-    duration: WooChartDuration,
-    chartData: WooChartData,
-    chartDrawer: WooChartDrawer,
+    duration: ChartDuration,
+    chartData: ChartData,
+    chartDrawer: ChartDrawer,
     focusIndex: Int,
 ) {
     var tapOffset by remember { mutableStateOf<Offset?>(null) }
@@ -28,7 +28,7 @@ fun WooChart(
 
     var chartSize by remember { mutableStateOf(Size(0f, 0f)) }
     val chartHelper by remember(chartData, chartSize) {
-        mutableStateOf(WooChartHelper(chartSize, duration, chartData))
+        mutableStateOf(ChartProcessor(chartSize, duration, chartData))
     }
     Canvas(
         modifier = modifier

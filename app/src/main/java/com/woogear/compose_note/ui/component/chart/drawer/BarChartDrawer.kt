@@ -12,14 +12,14 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.woogear.compose_note.ui.component.chart.WooChartHelper
-import com.woogear.compose_note.ui.component.chart.drawer.WooChartDrawer.Companion.CHART_INDEX_0
+import com.woogear.compose_note.ui.component.chart.ChartProcessor
+import com.woogear.compose_note.ui.component.chart.drawer.ChartDrawer.Companion.CHART_INDEX_0
 
 class BarChartDrawer(
     private val barWidth: Dp = 10.dp,
     private val barRadius: Dp = 4.dp,
     private val barColor: Color = Color(0xFF5C5C5C),
-) : WooChartDrawer {
+) : ChartDrawer {
 
     private val barPainter = Paint().apply {
         this.color = barColor
@@ -30,7 +30,7 @@ class BarChartDrawer(
     override fun drawChart(
         canvas: Canvas,
         drawScope: DrawScope,
-        chartHelper: WooChartHelper,
+        chartHelper: ChartProcessor,
         tapOffset: Offset?,
         pointerOffset: Offset?,
         onDrawSelectionMarker: (offset: Offset, index: Int) -> Unit,

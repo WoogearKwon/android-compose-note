@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.PaintingStyle
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.woogear.compose_note.ui.component.chart.WooChartHelper
+import com.woogear.compose_note.ui.component.chart.ChartProcessor
 
 class FloatingBarChartDrawer(
     private val barWidth: Dp = 10.dp,
@@ -16,7 +16,7 @@ class FloatingBarChartDrawer(
     private val colorSafe: Color = Color(0xFF66D758),
     private val colorAlert: Color = Color(0xFFFFB430),
     private val colorBad: Color = Color(0xFFEC5C5C),
-) : WooChartDrawer {
+) : ChartDrawer {
 
     private val paint = Paint().apply {
         this.style = PaintingStyle.Fill
@@ -26,7 +26,7 @@ class FloatingBarChartDrawer(
     override fun drawChart(
         canvas: Canvas,
         drawScope: DrawScope,
-        chartHelper: WooChartHelper,
+        chartHelper: ChartProcessor,
         tapOffset: Offset?,
         pointerOffset: Offset?,
         onDrawSelectionMarker: (offset: Offset, index: Int) -> Unit,

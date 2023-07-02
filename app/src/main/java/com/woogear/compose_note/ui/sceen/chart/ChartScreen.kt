@@ -26,12 +26,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.woogear.compose_note.ui.component.chart.WooChart
-import com.woogear.compose_note.ui.component.chart.WooChartData
-import com.woogear.compose_note.ui.component.chart.WooChartDuration
+import com.woogear.compose_note.ui.component.chart.EasyChart
+import com.woogear.compose_note.ui.component.chart.ChartData
+import com.woogear.compose_note.ui.component.chart.ChartDuration
 import com.woogear.compose_note.ui.component.chart.drawer.BarChartDrawer
 import com.woogear.compose_note.ui.component.chart.drawer.FloatingBarChartDrawer
-import com.woogear.compose_note.ui.component.chart.drawer.WooChartDrawer
+import com.woogear.compose_note.ui.component.chart.drawer.ChartDrawer
 import com.woogear.compose_note.ui.component.chart.drawer.LineChartDrawer
 
 @Composable
@@ -63,12 +63,12 @@ fun ChartScreen(
 @Composable
 private fun LineChartScreenContent(
     modifier: Modifier = Modifier,
-    data: WooChartData,
-    duration: WooChartDuration,
-    onDurationChanged: (WooChartDuration) -> Unit,
+    data: ChartData,
+    duration: ChartDuration,
+    onDurationChanged: (ChartDuration) -> Unit,
 ) {
-    var focusIndex by remember { mutableStateOf(WooChartDrawer.CHART_INDEX_0) }
-    var drawer by remember { mutableStateOf<WooChartDrawer>(LineChartDrawer()) }
+    var focusIndex by remember { mutableStateOf(ChartDrawer.CHART_INDEX_0) }
+    var drawer by remember { mutableStateOf<ChartDrawer>(LineChartDrawer()) }
 
     Column(
         modifier = modifier.padding(10.dp)
@@ -86,16 +86,16 @@ private fun LineChartScreenContent(
 @Composable
 private fun LineChartRow(
     focusIndex: Int,
-    drawer: WooChartDrawer,
-    duration: WooChartDuration,
-    chartData: WooChartData
+    drawer: ChartDrawer,
+    duration: ChartDuration,
+    chartData: ChartData
 ) {
     Box(
         modifier = Modifier
             .height(250.dp)
             .fillMaxWidth()
     ) {
-        WooChart(
+        EasyChart(
             chartData = chartData,
             duration = duration,
             chartDrawer = drawer,
@@ -110,13 +110,13 @@ private fun FocusButtons(onFocusChanged: (Int) -> Unit) {
         horizontalArrangement = Arrangement.Center,
     ) {
         Button(
-            onClick = { onFocusChanged.invoke(WooChartDrawer.CHART_INDEX_0) },
+            onClick = { onFocusChanged.invoke(ChartDrawer.CHART_INDEX_0) },
         ) {
             Text("FOCUS 1")
         }
         Button(
             modifier = Modifier.padding(start = 20.dp),
-            onClick = { onFocusChanged.invoke(WooChartDrawer.CHART_INDEX_1) },
+            onClick = { onFocusChanged.invoke(ChartDrawer.CHART_INDEX_1) },
         ) {
             Text("FOCUS 2")
         }
@@ -125,8 +125,8 @@ private fun FocusButtons(onFocusChanged: (Int) -> Unit) {
 
 @Composable
 private fun DrawerButtons(
-    chartData: WooChartData,
-    onDrawerChanged: (WooChartDrawer) -> Unit
+    chartData: ChartData,
+    onDrawerChanged: (ChartDrawer) -> Unit
 ) {
     Column(
         horizontalAlignment = Alignment.Start,
@@ -155,27 +155,27 @@ private fun DrawerButtons(
 }
 
 @Composable
-private fun DurationButtons(onDurationChanged: (WooChartDuration) -> Unit) {
+private fun DurationButtons(onDurationChanged: (ChartDuration) -> Unit) {
     Row(
         horizontalArrangement = Arrangement.Center,
     ) {
         Button(
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFA1FFA4)),
-            onClick = { onDurationChanged.invoke(WooChartDuration.WEEK) },
+            onClick = { onDurationChanged.invoke(ChartDuration.WEEK) },
         ) {
             Text("WEEK")
         }
         Button(
             modifier = Modifier.padding(start = 10.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFA1FFA4)),
-            onClick = { onDurationChanged.invoke(WooChartDuration.MONTH) },
+            onClick = { onDurationChanged.invoke(ChartDuration.MONTH) },
         ) {
             Text("MONTH")
         }
         Button(
             modifier = Modifier.padding(start = 10.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFA1FFA4)),
-            onClick = { onDurationChanged.invoke(WooChartDuration.SIX_MONTHS) },
+            onClick = { onDurationChanged.invoke(ChartDuration.SIX_MONTHS) },
         ) {
             Text("6_MONTHS")
         }
