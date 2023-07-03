@@ -10,7 +10,7 @@ class CategoriesViewModel : ViewModel() {
 
     companion object {
         val CATEGORY_ROUTES: List<Route> = listOf(
-            Route.ComponentCatalog,
+            Route.ComposeCatalog,
             Route.CanvasPainting
         )
     }

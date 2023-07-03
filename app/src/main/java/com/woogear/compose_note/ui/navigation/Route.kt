@@ -4,9 +4,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import com.woogear.compose_note.ui.sceen.components.bottomnav.BottomNavScreen
 import com.woogear.compose_note.ui.sceen.canvas.CanvasComponentsScreen
 import com.woogear.compose_note.ui.sceen.category.CategoriesScreen
-import com.woogear.compose_note.ui.sceen.chart.ChartScreen
+import com.woogear.compose_note.ui.sceen.canvas.chart.ChartScreen
+import com.woogear.compose_note.ui.sceen.components.ComposeCatalogScreen
 
 sealed class Route(
     val routePath: String,
@@ -30,14 +32,20 @@ sealed class Route(
         }
     }
 
-    object ComponentCatalog : Route(
-        routePath = "component_catalogs",
-        name = "Component Catalogs",
+    object ComposeCatalog : Route(
+        routePath = "compose_catalogs",
+        name = "Compose Catalogs",
         description = "Compose UI Components Catalogs"
     ) {
-        fun NavGraphBuilder.catalogScreen(navController: NavController) {
+        fun NavGraphBuilder.composeCatalogScreen(navController: NavController) {
             composable(route = routePath) {
-
+                ComposeCatalogScreen(
+                    viewModel = hiltViewModel(),
+                    onClickExit = navController::popBackStack,
+                    onClickComponent = { path ->
+                        navController.navigate(path)
+                    }
+                )
             }
         }
     }
@@ -70,6 +78,18 @@ sealed class Route(
                     viewModel = hiltViewModel(),
                     onClickExit = navController::popBackStack
                 )
+            }
+        }
+    }
+
+    object BottomNav: Route(
+        routePath = "bottom_nav",
+        name = "Bottom Navigation",
+        description = "Bottom Navigation Tab Example"
+    ) {
+        fun NavGraphBuilder.bottomNav(navController: NavController) {
+            composable(route = routePath) {
+                BottomNavScreen()
             }
         }
     }

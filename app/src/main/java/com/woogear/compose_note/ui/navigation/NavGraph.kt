@@ -4,10 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.woogear.compose_note.ui.navigation.Route.BottomNav.bottomNav
 import com.woogear.compose_note.ui.navigation.Route.CanvasChart.canvasChart
 import com.woogear.compose_note.ui.navigation.Route.CanvasPainting.canvasScreen
 import com.woogear.compose_note.ui.navigation.Route.Categories.categoriesScreen
-import com.woogear.compose_note.ui.navigation.Route.ComponentCatalog.catalogScreen
+import com.woogear.compose_note.ui.navigation.Route.ComposeCatalog.composeCatalogScreen
 
 @Composable
 fun AppNavHost(
@@ -21,8 +22,9 @@ fun AppNavHost(
         modifier = modifier
     ) {
         categoriesScreen(navController = navController)
-        catalogScreen(navController = navController)
+        composeCatalogScreen(navController = navController)
         canvasScreen(navController = navController)
         canvasChart(navController = navController)
+        bottomNav(navController = navController)
     }
 }
