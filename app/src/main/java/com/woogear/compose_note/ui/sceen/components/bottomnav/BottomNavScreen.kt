@@ -72,10 +72,6 @@ private fun BottomTabRow(
     Surface(
         Modifier
             .fillMaxWidth()
-            .border(
-                width = 1.dp,
-                color = Color.Gray
-            )
     ) {
         BottomNavigation(
             backgroundColor = Color.White,
