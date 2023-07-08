@@ -1,4 +1,4 @@
-package com.woogear.compose_note.ui.sceen.components.bottomnav
+package com.woogear.compose_note.ui.screen.components.bottomnav
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons

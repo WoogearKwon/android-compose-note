@@ -1,4 +1,4 @@
-package com.woogear.compose_note.ui.sceen.canvas.chart
+package com.woogear.compose_note.ui.screen.canvas.chart
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

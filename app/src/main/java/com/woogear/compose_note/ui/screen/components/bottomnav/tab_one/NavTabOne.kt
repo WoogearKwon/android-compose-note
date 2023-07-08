@@ -1,4 +1,4 @@
-package com.woogear.compose_note.ui.sceen.components.bottomnav.tab_one
+package com.woogear.compose_note.ui.screen.components.bottomnav.tab_one
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

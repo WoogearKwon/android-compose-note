@@ -1,4 +1,4 @@
-package com.woogear.compose_note.ui.sceen.canvas
+package com.woogear.compose_note.ui.screen.canvas
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row

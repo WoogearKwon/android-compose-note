@@ -1,4 +1,4 @@
-package com.woogear.compose_note.ui.sceen.canvas
+package com.woogear.compose_note.ui.screen.canvas
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

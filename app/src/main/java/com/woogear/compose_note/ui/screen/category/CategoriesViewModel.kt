@@ -1,4 +1,4 @@
-package com.woogear.compose_note.ui.sceen.category
+package com.woogear.compose_note.ui.screen.category
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
