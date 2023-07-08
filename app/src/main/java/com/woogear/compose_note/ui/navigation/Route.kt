@@ -4,11 +4,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.woogear.compose_note.ui.sceen.components.bottomnav.BottomNavScreen
-import com.woogear.compose_note.ui.sceen.canvas.CanvasComponentsScreen
-import com.woogear.compose_note.ui.sceen.category.CategoriesScreen
-import com.woogear.compose_note.ui.sceen.canvas.chart.ChartScreen
-import com.woogear.compose_note.ui.sceen.components.ComposeCatalogScreen
+import com.woogear.compose_note.ui.screen.components.bottomnav.BottomNavScreen
+import com.woogear.compose_note.ui.screen.canvas.CanvasComponentsScreen
+import com.woogear.compose_note.ui.screen.category.CategoriesScreen
+import com.woogear.compose_note.ui.screen.canvas.chart.ChartScreen
+import com.woogear.compose_note.ui.screen.components.ComposeCatalogScreen
 
 sealed class Route(
     val routePath: String,
