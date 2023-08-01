@@ -13,4 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "compose-note"
-include ':app'
+
+include(":app")
