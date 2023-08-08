@@ -1,21 +1,26 @@
 package com.woogear.presentation.model
 
+import androidx.compose.ui.graphics.Color
+import com.woogear.presentation.theme.basicColors
+
 data class ScreenCategory(
     val title: String,
     val description: String,
     val type: ScreenCategoryType,
+    val color: Color = basicColors.random(),
     val screens: List<Screen>,
 )
 
 enum class ScreenCategoryType {
     ComposeCatalog,
-    CanvasDrawing
+    CanvasDrawing,
 }
 
 data class Screen(
     val title: String,
     val description: String,
-    val type: ScreenType
+    val type: ScreenType,
+    val color: Color = basicColors.random()
 )
 
 enum class ScreenType {

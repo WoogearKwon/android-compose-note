@@ -6,7 +6,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.woogear.presentation.screen.canvas.CanvasComponentsScreen
+import com.woogear.presentation.screen.canvas.CanvasDrawingScreen
 import com.woogear.presentation.screen.canvas.chart.ChartScreen
 import com.woogear.presentation.screen.compose.bottomnav.BottomNavScreen
 import com.woogear.presentation.model.ScreenCategoryType
@@ -17,9 +17,7 @@ import com.woogear.presentation.screen.compose.ComposeComponentArgs
 
 sealed class Route(val routePath: String) {
 
-    object Categories : Route(
-        routePath = "/categories",
-    ) {
+    object Categories : Route(routePath = "/categories") {
         fun NavGraphBuilder.categoriesScreen(navController: NavController) {
             composable(route = routePath) {
                 CategoriesScreen(
@@ -41,7 +39,6 @@ sealed class Route(val routePath: String) {
     }
 
     object ComposeCatalog : Route(routePath = "/compose/{${ComposeComponentArgs.Key}}") {
-
         fun NavGraphBuilder.composeCatalogScreen(navController: NavController) {
             composable(
                 route = routePath,
@@ -61,10 +58,9 @@ sealed class Route(val routePath: String) {
     }
 
     object CanvasDrawing : Route(routePath = "/canvas") {
-
-        fun NavGraphBuilder.canvasScreen(navController: NavController) {
+        fun NavGraphBuilder.canvasDrawingScreen(navController: NavController) {
             composable(route = routePath) {
-                CanvasComponentsScreen(
+                CanvasDrawingScreen(
                     viewModel = hiltViewModel(),
                     onClickExit = navController::popBackStack,
                     onClickComponent = { screenType ->

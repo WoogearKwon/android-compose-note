@@ -7,5 +7,5 @@ import com.woogear.presentation.model.ScreenCategory
 import com.woogear.presentation.model.appScreenCategories
 
 class CategoriesViewModel : ViewModel() {
-    val routes: List<ScreenCategory> by mutableStateOf(appScreenCategories)
+    val screenCategories: List<ScreenCategory> by mutableStateOf(appScreenCategories)
 }
