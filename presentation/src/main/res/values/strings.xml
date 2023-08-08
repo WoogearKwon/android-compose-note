@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">presentation</string>
+    <string name="bottom_nav_tab_one">tab1</string>
+    <string name="bottom_nav_tab_two">tab2</string>
+    <string name="bottom_nav_tab_three">tab3</string>
+    <string name="bottom_nav_tab_four">tab4</string>
 </resources>

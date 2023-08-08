@@ -113,6 +113,12 @@ object Libs {
         const val messaging = "com.google.firebase:firebase-messaging-ktx"
     }
 
+    object Gson {
+        private const val version = "2.10.1"
+
+        const val gson = "com.google.code.gson:gson:$version"
+    }
+
     object Junit {
         private const val version = "4.13.2"
 
@@ -127,7 +133,7 @@ object Libs {
         }
 
         object SerializationJson {
-            private const val version = "1.4.1"
+            private const val version = "1.5.1"
 
             const val serializationJson =
                 "org.jetbrains.kotlinx:kotlinx-serialization-json:$version"
