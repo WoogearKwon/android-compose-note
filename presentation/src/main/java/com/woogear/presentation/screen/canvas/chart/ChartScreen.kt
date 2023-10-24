@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
@@ -47,7 +48,9 @@ fun ChartScreen(
                         Icon(Icons.Filled.ArrowBack, contentDescription = null)
                     }
                 },
-                title = { Text(text = "Chart") }
+                title = {
+                    Text(text = "Chart")
+                }
             )
         },
     ) {
@@ -74,7 +77,11 @@ private fun LineChartScreenContent(
         modifier = modifier.padding(10.dp)
     ) {
         LineChartRow(focusIndex, drawer, duration, data)
-        FocusButtons(onFocusChanged = { focusIndex = it })
+        Spacer(modifier = Modifier.height(30.dp))
+        FocusButtons(
+            focusIndex = focusIndex,
+            onFocusChanged = { focusIndex = it }
+        )
         Spacer(modifier = Modifier.height(30.dp))
         DrawerButtons(data, onDrawerChanged = { drawer = it })
         Spacer(modifier = Modifier.height(30.dp))
@@ -88,7 +95,7 @@ private fun LineChartRow(
     focusIndex: Int,
     drawer: ChartDrawer,
     duration: ChartDuration,
-    chartData: ChartData
+    chartData: ChartData,
 ) {
     Box(
         modifier = Modifier
@@ -105,18 +112,25 @@ private fun LineChartRow(
 }
 
 @Composable
-private fun FocusButtons(onFocusChanged: (Int) -> Unit) {
+private fun FocusButtons(
+    focusIndex: Int,
+    onFocusChanged: (Int) -> Unit,
+) {
     Row(
         horizontalArrangement = Arrangement.Center,
     ) {
         Button(
-            onClick = { onFocusChanged.invoke(ChartDrawer.CHART_INDEX_0) },
+            onClick = {
+                onFocusChanged.invoke(ChartDrawer.CHART_INDEX_0)
+            },
         ) {
             Text("FOCUS 1")
         }
         Button(
             modifier = Modifier.padding(start = 20.dp),
-            onClick = { onFocusChanged.invoke(ChartDrawer.CHART_INDEX_1) },
+            onClick = {
+                onFocusChanged.invoke(ChartDrawer.CHART_INDEX_1)
+            },
         ) {
             Text("FOCUS 2")
         }
@@ -126,7 +140,7 @@ private fun FocusButtons(onFocusChanged: (Int) -> Unit) {
 @Composable
 private fun DrawerButtons(
     chartData: ChartData,
-    onDrawerChanged: (ChartDrawer) -> Unit
+    onDrawerChanged: (ChartDrawer) -> Unit,
 ) {
     Column(
         horizontalAlignment = Alignment.Start,
@@ -143,13 +157,12 @@ private fun DrawerButtons(
         ) {
             Text("BarChartDrawer")
         }
-        if (chartData.hasDoubleValue) {
-            Button(
-                onClick = { onDrawerChanged.invoke(FloatingBarChartDrawer()) },
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF91ADFF))
-            ) {
-                Text("FloatingBarChartDrawer")
-            }
+        Button(
+            enabled = chartData.hasDoubleValue,
+            onClick = { onDrawerChanged.invoke(FloatingBarChartDrawer()) },
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF91ADFF))
+        ) {
+            Text("FloatingBarChartDrawer")
         }
     }
 }
