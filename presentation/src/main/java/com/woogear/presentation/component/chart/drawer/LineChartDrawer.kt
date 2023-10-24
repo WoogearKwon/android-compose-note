@@ -1,6 +1,7 @@
 package com.woogear.presentation.component.chart.drawer
 
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Paint
@@ -13,6 +14,7 @@ import com.woogear.presentation.component.chart.ChartProcessor
 import com.woogear.presentation.component.chart.ChartStatus
 import com.woogear.presentation.component.chart.drawer.ChartDrawer.Companion.CHART_INDEX_0
 import com.woogear.presentation.component.chart.drawer.ChartDrawer.Companion.CHART_INDEX_1
+import com.woogear.presentation.theme.White
 
 class LineChartDrawer(
     private val pointerDiameter: Dp = 10.dp,
@@ -21,7 +23,7 @@ class LineChartDrawer(
     private val outerPointerColor: Color = Color.White,
     private val lineColor: Color = Color(0xFFB7B7B7),
     private val unfocusedColor: Color = Color(0xFFEFEFEF),
-    private val shaderColor: Color = Color(0x1A000000),
+    private val shaderColor: Color = Color(0x4D000000),
     private val colorSafe: Color = Color(0xFF66D758),
     private val colorAlert: Color = Color(0xFFFFB430),
     private val colorBad: Color = Color(0xFFEC5C5C),
@@ -95,7 +97,12 @@ class LineChartDrawer(
         linePainter.color = lineColor
 
         if (isFocused) {
-            drawPath(pathPair.second, shaderColor)
+            drawPath(
+                path = pathPair.second,
+                brush = Brush.verticalGradient(
+                    colors = listOf(shaderColor, White),
+                )
+            )
         }
         canvas.drawPath(pathPair.first, linePainter)
         drawSelectionMarker(canvas, chartProcessor, pointerOffset, isFocused)
