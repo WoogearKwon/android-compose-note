@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.woogear.presentation.model.Screen
 import com.woogear.presentation.model.ScreenType
+import com.woogear.presentation.theme.basicColors
 
 @Composable
 fun Screens(
@@ -41,7 +42,7 @@ fun Screens(
                 modifier = Modifier
                     .padding(4.dp)
                     .height(itemWidth)
-                    .background(screen.color)
+                    .background(basicColors.random())
                     .clickable { onClickCategory(screen.type) },
             ) {
                 Column(

@@ -65,6 +65,7 @@ dependencies {
     implementation(Libs.AndroidX.Navigation.navigationCompose)
     implementation(Libs.Dagger.hiltAndroid)
     implementation(Libs.AndroidX.Hilt.hiltNavigationCompose)
+    implementation(Libs.KotlinX.SerializationJson.serializationJson)
     kapt(Libs.Dagger.hiltCompiler)
 
     testImplementation(Libs.Junit.junit)

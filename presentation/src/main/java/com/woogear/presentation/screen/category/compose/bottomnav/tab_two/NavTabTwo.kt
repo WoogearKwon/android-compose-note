@@ -1,4 +1,4 @@
-package com.woogear.presentation.screen.compose.bottomnav.tab_two
+package com.woogear.presentation.screen.category.compose.bottomnav.tab_two
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

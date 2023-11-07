@@ -1,4 +1,4 @@
-package com.woogear.presentation.screen.compose.bottomnav
+package com.woogear.presentation.screen.category.compose.bottomnav
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,10 +26,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.woogear.presentation.screen.compose.bottomnav.tab_four.BottomNavTabFour
-import com.woogear.presentation.screen.compose.bottomnav.tab_one.BottomNavTabOne
-import com.woogear.presentation.screen.compose.bottomnav.tab_three.BottomNavTabThree
-import com.woogear.presentation.screen.compose.bottomnav.tab_two.BottomNavTabTwo
+import com.woogear.presentation.screen.category.compose.bottomnav.tab_four.BottomNavTabFour
+import com.woogear.presentation.screen.category.compose.bottomnav.tab_one.BottomNavTabOne
+import com.woogear.presentation.screen.category.compose.bottomnav.tab_three.BottomNavTabThree
+import com.woogear.presentation.screen.category.compose.bottomnav.tab_two.BottomNavTabTwo
 
 @Composable
 fun BottomNavScreen() {

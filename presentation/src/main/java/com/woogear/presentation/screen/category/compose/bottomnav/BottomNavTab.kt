@@ -1,4 +1,4 @@
-package com.woogear.presentation.screen.compose.bottomnav
+package com.woogear.presentation.screen.category.compose.bottomnav
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons

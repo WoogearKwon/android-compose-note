@@ -1,4 +1,4 @@
-package com.woogear.presentation.screen.category
+package com.woogear.presentation.screen.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -21,11 +21,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.woogear.presentation.model.ScreenCategory
+import com.woogear.presentation.theme.basicColors
 
 @Composable
-fun CategoriesScreen(
+fun HomeScreen(
     modifier: Modifier = Modifier,
-    viewModel: CategoriesViewModel,
+    screenCategories: List<ScreenCategory>,
     onClickCategory: (path: ScreenCategory) -> Unit,
 ) {
     Scaffold(
@@ -34,7 +35,7 @@ fun CategoriesScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Categories",
+                        text = "Home",
                         color = Color.White,
                         fontSize = 22.sp
                     )
@@ -45,7 +46,7 @@ fun CategoriesScreen(
         LazyColumn(
             modifier = Modifier.padding(it)
         ) {
-            items(items = viewModel.screenCategories) { category ->
+            items(items = screenCategories) { category ->
                 Card(
                     elevation = 10.dp,
                     modifier = Modifier
@@ -53,7 +54,7 @@ fun CategoriesScreen(
                         .fillMaxWidth()
                         .padding(10.dp)
                         .clickable { onClickCategory(category) },
-                    backgroundColor = category.color,
+                    backgroundColor = basicColors.random(),
                 ) {
                     Row(
                         modifier = Modifier.padding(18.dp),

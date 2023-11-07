@@ -1,5 +1,6 @@
-package com.woogear.presentation.screen.canvas
+package com.woogear.presentation.screen.category.example.unsplash
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -10,33 +11,29 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.woogear.presentation.component.Screens
-import com.woogear.presentation.model.ScreenType
 
 @Composable
-fun CanvasDrawingScreen(
-    viewModel: CanvasDrawingsViewModel,
-    onClickExit: () -> Unit,
-    onClickComponent: (type: ScreenType) -> Unit,
+fun UnsplashScreen(
+    onClickExit: () -> Unit
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    IconButton(onClick = onClickExit) {
+                    IconButton(onClick = { onClickExit.invoke() }) {
                         Icon(Icons.Filled.ArrowBack, contentDescription = null)
                     }
                 },
                 title = {
-                    Text(text = viewModel.screenCategory.title)
+                    Text(text = "Unsplash Images")
                 }
             )
         },
     ) {
-        Screens(
-            modifier = Modifier.padding(it),
-            screens = viewModel.screenCategory.screens,
-            onClickCategory = onClickComponent
-        )
+        Column(
+            modifier = Modifier.padding(it)
+        ) {
+
+        }
     }
 }

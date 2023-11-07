@@ -1,4 +1,4 @@
-package com.woogear.presentation.screen.canvas.chart
+package com.woogear.presentation.screen.category.canvas.chart
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

@@ -6,25 +6,23 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.woogear.compose_note.ui.navigation.Route.BottomNav.bottomNav
 import com.woogear.compose_note.ui.navigation.Route.CanvasChart.canvasChart
-import com.woogear.compose_note.ui.navigation.Route.CanvasDrawing.canvasDrawingScreen
-import com.woogear.compose_note.ui.navigation.Route.Categories.categoriesScreen
-import com.woogear.compose_note.ui.navigation.Route.ComposeCatalog.composeCatalogScreen
+import com.woogear.compose_note.ui.navigation.Route.Category.composeCatalogScreen
+import com.woogear.compose_note.ui.navigation.Route.Home.homeScreen
 import com.woogear.compose_note.ui.navigation.Route.Unsplash.unsplash
 
 @Composable
 fun AppNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    startDestination: String = Route.initialPath
+    startDestination: String = Route.initialPath,
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier
     ) {
-        categoriesScreen(navController = navController)
+        homeScreen(navController = navController)
         composeCatalogScreen(navController = navController)
-        canvasDrawingScreen(navController = navController)
         canvasChart(navController = navController)
         bottomNav(navController = navController)
         unsplash(navController = navController)

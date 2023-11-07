@@ -6,71 +6,57 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.woogear.presentation.screen.canvas.CanvasDrawingScreen
-import com.woogear.presentation.screen.canvas.chart.ChartScreen
-import com.woogear.presentation.screen.compose.bottomnav.BottomNavScreen
-import com.woogear.presentation.model.ScreenCategoryType
+import com.woogear.compose_note.ui.helper.appScreenCategories
+import com.woogear.compose_note.ui.helper.encodeArgument
+import com.woogear.compose_note.ui.helper.getRequiredArgument
+import com.woogear.presentation.model.ScreenCategory
 import com.woogear.presentation.model.ScreenType
-import com.woogear.presentation.screen.category.CategoriesScreen
-import com.woogear.presentation.screen.compose.ComposeCatalogScreen
-import com.woogear.presentation.screen.compose.ComposeComponentArgs
-import com.woogear.presentation.screen.compose.unsplash.UnsplashScreen
+import com.woogear.presentation.screen.category.CategoryArgs
+import com.woogear.presentation.screen.category.CategoryScreen
+import com.woogear.presentation.screen.category.canvas.chart.ChartScreen
+import com.woogear.presentation.screen.category.compose.bottomnav.BottomNavScreen
+import com.woogear.presentation.screen.category.example.unsplash.UnsplashScreen
+import com.woogear.presentation.screen.home.HomeScreen
 
 sealed class Route(val routePath: String) {
 
-    object Categories : Route(routePath = "/categories") {
-        fun NavGraphBuilder.categoriesScreen(navController: NavController) {
+    object Home : Route(routePath = "/home") {
+        fun NavGraphBuilder.homeScreen(navController: NavController) {
             composable(route = routePath) {
-                CategoriesScreen(
+                HomeScreen(
                     modifier = Modifier.imePadding(),
-                    viewModel = hiltViewModel(),
+                    screenCategories = appScreenCategories,
                     onClickCategory = { category ->
-                        when (category.type) {
-                            ScreenCategoryType.ComposeCatalog -> {
-                                navController.navigate(ComposeCatalog.routePath)
-                            }
-                            ScreenCategoryType.CanvasDrawing -> {
-                                navController.navigate(CanvasDrawing.routePath)
-                            }
-                        }
+                        navController.navigate(route = Category.getPath(category))
                     }
                 )
             }
         }
     }
 
-    object ComposeCatalog : Route(routePath = "/compose/{${ComposeComponentArgs.Key}}") {
+    object Category : Route(routePath = "/category/{${CategoryArgs.Key}}") {
+        fun getPath(screenCategory: ScreenCategory): String {
+            val encoded = encodeArgument(CategoryArgs(categoryType = screenCategory))
+            return "/category/$encoded"
+        }
+
         fun NavGraphBuilder.composeCatalogScreen(navController: NavController) {
             composable(
                 route = routePath,
-            ) {
-                ComposeCatalogScreen(
-                    viewModel = hiltViewModel(),
+            ) { backStackEntry ->
+                val args: CategoryArgs =
+                    backStackEntry.getRequiredArgument(CategoryArgs.Key)
+                CategoryScreen(
+                    screenCategory = args.categoryType,
                     onClickExit = navController::popBackStack,
                     onClickComponent = { screenType ->
                         when (screenType) {
-                            ScreenType.BottomNavigation -> navController.navigate(BottomNav.routePath)
-                            ScreenType.Unsplash -> navController.navigate(Unsplash.routePath)
-                            else -> {}
+                            ScreenType.BottomNavigation -> navController.navigate(routePath)
+                            ScreenType.CanvasChart -> navController.navigate(routePath)
+                            ScreenType.Unsplash -> navController.navigate(routePath)
                         }
                     }
                 )
-            }
-        }
-    }
-
-    object CanvasDrawing : Route(routePath = "/canvas") {
-        fun NavGraphBuilder.canvasDrawingScreen(navController: NavController) {
-            composable(route = routePath) {
-                CanvasDrawingScreen(
-                    viewModel = hiltViewModel(),
-                    onClickExit = navController::popBackStack,
-                    onClickComponent = { screenType ->
-                        when (screenType) {
-                            ScreenType.CanvasChart -> navController.navigate(CanvasChart.routePath)
-                            else -> {}
-                        }
-                    })
             }
         }
     }
@@ -86,7 +72,7 @@ sealed class Route(val routePath: String) {
         }
     }
 
-    object BottomNav: Route(routePath = "/compose/bottom_nav") {
+    object BottomNav : Route(routePath = "/compose/bottom_nav") {
         fun NavGraphBuilder.bottomNav(navController: NavController) {
             composable(route = routePath) {
                 BottomNavScreen()
@@ -94,7 +80,7 @@ sealed class Route(val routePath: String) {
         }
     }
 
-    object Unsplash: Route(routePath = "/compose/unsplash") {
+    object Unsplash : Route(routePath = "/compose/unsplash") {
         fun NavGraphBuilder.unsplash(navController: NavController) {
             composable(route = routePath) {
                 UnsplashScreen(
@@ -105,6 +91,6 @@ sealed class Route(val routePath: String) {
     }
 
     companion object {
-        val initialPath = Categories.routePath
+        val initialPath = Home.routePath
     }
 }
