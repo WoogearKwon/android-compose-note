@@ -44,7 +44,7 @@ private val composeExamples
     get() = ScreenCategory(
         title = "Compose Examples",
         description = "Example Screens Using Compose",
-        type = ScreenCategoryType.CanvasDrawing,
+        type = ScreenCategoryType.Example,
         screens = listOf(
             Screen(
                 title = "Unsplash Demo",
