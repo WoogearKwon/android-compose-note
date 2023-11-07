@@ -14,6 +14,7 @@ import com.woogear.presentation.model.ScreenType
 import com.woogear.presentation.screen.category.CategoriesScreen
 import com.woogear.presentation.screen.compose.ComposeCatalogScreen
 import com.woogear.presentation.screen.compose.ComposeComponentArgs
+import com.woogear.presentation.screen.compose.unsplash.UnsplashScreen
 
 sealed class Route(val routePath: String) {
 
@@ -49,6 +50,7 @@ sealed class Route(val routePath: String) {
                     onClickComponent = { screenType ->
                         when (screenType) {
                             ScreenType.BottomNavigation -> navController.navigate(BottomNav.routePath)
+                            ScreenType.Unsplash -> navController.navigate(Unsplash.routePath)
                             else -> {}
                         }
                     }
@@ -88,6 +90,16 @@ sealed class Route(val routePath: String) {
         fun NavGraphBuilder.bottomNav(navController: NavController) {
             composable(route = routePath) {
                 BottomNavScreen()
+            }
+        }
+    }
+
+    object Unsplash: Route(routePath = "/compose/unsplash") {
+        fun NavGraphBuilder.unsplash(navController: NavController) {
+            composable(route = routePath) {
+                UnsplashScreen(
+                    onClickExit = navController::popBackStack
+                )
             }
         }
     }

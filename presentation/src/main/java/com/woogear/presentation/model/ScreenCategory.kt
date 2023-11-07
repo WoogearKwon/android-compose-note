@@ -25,6 +25,7 @@ data class Screen(
 
 enum class ScreenType {
     BottomNavigation,
+    Unsplash,
     CanvasChart,
 }
 
@@ -43,6 +44,11 @@ val composCatalogs get() = ScreenCategory(
             description = "Bottom Navigation Tab Example",
             type = ScreenType.BottomNavigation
         ),
+        Screen(
+            title = "Unsplash Demo",
+            description = "Unsplash Images",
+            type = ScreenType.Unsplash,
+        )
     )
 )
 

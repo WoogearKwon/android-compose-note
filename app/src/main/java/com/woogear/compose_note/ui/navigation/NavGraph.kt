@@ -9,6 +9,7 @@ import com.woogear.compose_note.ui.navigation.Route.CanvasChart.canvasChart
 import com.woogear.compose_note.ui.navigation.Route.CanvasDrawing.canvasDrawingScreen
 import com.woogear.compose_note.ui.navigation.Route.Categories.categoriesScreen
 import com.woogear.compose_note.ui.navigation.Route.ComposeCatalog.composeCatalogScreen
+import com.woogear.compose_note.ui.navigation.Route.Unsplash.unsplash
 
 @Composable
 fun AppNavHost(
@@ -26,5 +27,6 @@ fun AppNavHost(
         canvasDrawingScreen(navController = navController)
         canvasChart(navController = navController)
         bottomNav(navController = navController)
+        unsplash(navController = navController)
     }
 }

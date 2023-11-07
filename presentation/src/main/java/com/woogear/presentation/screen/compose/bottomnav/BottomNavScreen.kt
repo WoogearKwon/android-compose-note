@@ -32,9 +32,7 @@ import com.woogear.presentation.screen.compose.bottomnav.tab_three.BottomNavTabT
 import com.woogear.presentation.screen.compose.bottomnav.tab_two.BottomNavTabTwo
 
 @Composable
-fun BottomNavScreen(
-
-) {
+fun BottomNavScreen() {
     var selectedTab by remember { mutableStateOf(BottomNavTab.TabOne) }
 
     Scaffold(
