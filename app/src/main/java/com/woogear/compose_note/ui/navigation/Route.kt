@@ -37,6 +37,7 @@ sealed class Route(val routePath: String) {
     object Category : Route(routePath = "/category/{${CategoryArgs.Key}}") {
         fun getPath(screenCategory: ScreenCategory): String {
             val encoded = encodeArgument(CategoryArgs(categoryType = screenCategory))
+
             return "/category/$encoded"
         }
 
@@ -44,8 +45,8 @@ sealed class Route(val routePath: String) {
             composable(
                 route = routePath,
             ) { backStackEntry ->
-                val args: CategoryArgs =
-                    backStackEntry.getRequiredArgument(CategoryArgs.Key)
+                val args: CategoryArgs = backStackEntry.getRequiredArgument(CategoryArgs.Key)
+
                 CategoryScreen(
                     screenCategory = args.categoryType,
                     onClickExit = navController::popBackStack,
