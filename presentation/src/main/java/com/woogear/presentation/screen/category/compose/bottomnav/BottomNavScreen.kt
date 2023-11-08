@@ -12,9 +12,13 @@ import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,11 +36,25 @@ import com.woogear.presentation.screen.category.compose.bottomnav.tab_three.Bott
 import com.woogear.presentation.screen.category.compose.bottomnav.tab_two.BottomNavTabTwo
 
 @Composable
-fun BottomNavScreen() {
+fun BottomNavScreen(
+    onClickExit: () -> Unit,
+) {
     var selectedTab by remember { mutableStateOf(BottomNavTab.TabOne) }
 
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
+        topBar = {
+            TopAppBar(
+                navigationIcon = {
+                    IconButton(onClick = { onClickExit.invoke() }) {
+                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
+                    }
+                },
+                title = {
+                    Text(text = "BottomNavigation")
+                }
+            )
+        },
         bottomBar = {
             BottomTabRow(
                 onTabSelected = {

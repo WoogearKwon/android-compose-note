@@ -71,19 +71,17 @@ val Grey03Icon = Color(0xFFCCCCCC)
 val Grey04Inactive = Color(0xFF999999)
 val White01Basic = Color(0xFFFFFFFF)
 
-val characterBorderColors = mapOf(
-    RetroOrange03Basic to RetroOrange04Dark,
-    RetroOrange03Basic to RetroOrange04Dark,
-    RetroYellow03Basic to RetroYellow04Dark,
-    RetroMint03Basic to RetroMint04Dark,
-    RetroGreen03Basic to RetroGreen04Dark,
-    RetroBlue03Basic to RetroBlue04Dark,
-    RetroNavy03Basic to RetroNavy04Dark,
-    RetroViolet03Basic to RetroViolet04Dark,
-    RetroPink03Basic to RetroPink04Dark,
-)
+val backgroundColors = listOf<ULong>(
+    RetroPink02Light.value,
+    RetroBlue02Light.value,
+    RetroMint02Light.value,
+    RetroOrange02Light.value,
+    RetroYellow02Light.value,
+    RetroGreen02Light.value,
+    RetroViolet02Light.value,
+    RetroNavy02Light.value,
+    Red02Light.value,
 
-val basicColors = listOf(
     Black01Basic.value,
     RetroPink03Basic.value,
     RetroBlue03Basic.value,
@@ -94,4 +92,15 @@ val basicColors = listOf(
     RetroViolet03Basic.value,
     RetroNavy03Basic.value,
     Red03Basic.value,
+
+    RetroPink04Dark.value,
+    RetroBlue04Dark.value,
+    RetroMint04Dark.value,
+    RetroOrange04Dark.value,
+    RetroYellow04Dark.value,
+    RetroGreen04Dark.value,
+    RetroViolet04Dark.value,
+    RetroNavy04Dark.value,
+    Red04Dark.value,
+    Red04Dark.value,
 )

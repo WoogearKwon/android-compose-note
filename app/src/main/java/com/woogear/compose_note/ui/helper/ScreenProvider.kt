@@ -5,14 +5,15 @@ import com.woogear.presentation.model.Screen
 import com.woogear.presentation.model.ScreenCategory
 import com.woogear.presentation.model.ScreenCategoryType
 import com.woogear.presentation.model.ScreenType
-import com.woogear.presentation.theme.basicColors
+import com.woogear.presentation.theme.backgroundColors
 
-val appScreenCategories
-    get() = listOf(
+object ScreenProvider {
+    val appScreenCategories= listOf(
         composCatalogs,
         canvasDrawings,
         composeExamples
     )
+}
 
 private val composCatalogs = ScreenCategory(
     titleRes = R.string.compose_catalogs_title,
@@ -23,10 +24,10 @@ private val composCatalogs = ScreenCategory(
             titleRes = R.string.bottom_navigation_title,
             descriptionRes = R.string.bottom_navigation_description,
             type = ScreenType.BottomNavigation,
-            backgroundColor = basicColors.random()
+            backgroundColor = backgroundColors.random()
         ),
     ),
-    backgroundColor = basicColors.random()
+    backgroundColor = backgroundColors.random()
 )
 
 private val canvasDrawings = ScreenCategory(
@@ -38,10 +39,10 @@ private val canvasDrawings = ScreenCategory(
             titleRes = R.string.canvas_chart_title,
             descriptionRes = R.string.canvas_chart_description,
             type = ScreenType.CanvasChart,
-            backgroundColor = basicColors.random()
+            backgroundColor = backgroundColors.random()
         )
     ),
-    backgroundColor = basicColors.random()
+    backgroundColor = backgroundColors.random()
 )
 
 private val composeExamples = ScreenCategory(
@@ -53,8 +54,8 @@ private val composeExamples = ScreenCategory(
             titleRes = R.string.unsplash_demo_title,
             descriptionRes = R.string.unsplash_description,
             type = ScreenType.Unsplash,
-            backgroundColor = basicColors.random()
+            backgroundColor = backgroundColors.random()
         )
     ),
-    backgroundColor = basicColors.random()
+    backgroundColor = backgroundColors.random()
 )

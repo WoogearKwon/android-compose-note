@@ -15,6 +15,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.contentColorFor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -93,14 +94,14 @@ private fun Screens(
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Start,
-                        color = Color.White,
+                        color = contentColorFor(Color(screen.backgroundColor)),
                     )
                     Text(
                         modifier = Modifier.padding(12.dp),
                         text = stringResource(id = screen.descriptionRes),
                         fontSize = 12.sp,
                         textAlign = TextAlign.Start,
-                        color = Color.White,
+                        color = contentColorFor(Color(screen.backgroundColor)),
                     )
                 }
             }

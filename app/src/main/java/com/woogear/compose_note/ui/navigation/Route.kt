@@ -6,7 +6,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.woogear.compose_note.ui.helper.appScreenCategories
+import com.woogear.compose_note.ui.helper.ScreenProvider
 import com.woogear.compose_note.ui.helper.encodeArgument
 import com.woogear.compose_note.ui.helper.getRequiredArgument
 import com.woogear.presentation.model.ScreenCategory
@@ -25,7 +25,7 @@ sealed class Route(val routePath: String) {
             composable(route = routePath) {
                 HomeScreen(
                     modifier = Modifier.imePadding(),
-                    screenCategories = appScreenCategories,
+                    screenCategories = ScreenProvider.appScreenCategories,
                     onClickCategory = { category ->
                         navController.navigate(route = Category.getPath(category))
                     }
@@ -86,7 +86,9 @@ sealed class Route(val routePath: String) {
 
         fun NavGraphBuilder.bottomNav(navController: NavController) {
             composable(route = routePath) {
-                BottomNavScreen()
+                BottomNavScreen(
+                    onClickExit = navController::popBackStack
+                )
             }
         }
     }

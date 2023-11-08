@@ -13,6 +13,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -64,7 +65,7 @@ fun HomeScreen(
                             modifier = Modifier.weight(1f),
                             text = stringResource(id = category.titleRes),
                             textAlign = TextAlign.Start,
-                            color = Color.White,
+                            color = contentColorFor(Color(category.backgroundColor)),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -73,7 +74,7 @@ fun HomeScreen(
                             modifier = Modifier.weight(2f),
                             text = stringResource(id = category.descriptionRes),
                             textAlign = TextAlign.Start,
-                            color = Color.White
+                            color = contentColorFor(Color(category.backgroundColor))
                         )
                     }
                 }
