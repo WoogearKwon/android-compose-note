@@ -99,6 +99,7 @@ sealed class Route(val routePath: String) {
         fun NavGraphBuilder.unsplash(navController: NavController) {
             composable(route = routePath) {
                 UnsplashScreen(
+                    viewModel = hiltViewModel(),
                     onClickExit = navController::popBackStack
                 )
             }

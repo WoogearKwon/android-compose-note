@@ -1,15 +1,14 @@
 package com.woogear.presentation.screen.category
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -77,12 +76,14 @@ private fun Screens(
         columns = GridCells.Fixed(2)
     ) {
         items(screens) { screen ->
-            Box(
+            Card(
                 modifier = Modifier
                     .padding(4.dp)
                     .height(itemWidth)
-                    .background(Color(screen.backgroundColor))
                     .clickable { onClickCategory(screen.type) },
+                elevation = 10.dp,
+                backgroundColor = Color(screen.backgroundColor),
+
             ) {
                 Column(
                     verticalArrangement = Arrangement.Top,
@@ -94,14 +95,14 @@ private fun Screens(
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Start,
-                        color = contentColorFor(Color(screen.backgroundColor)),
+                        color = Color.White,
                     )
                     Text(
                         modifier = Modifier.padding(12.dp),
                         text = stringResource(id = screen.descriptionRes),
                         fontSize = 12.sp,
                         textAlign = TextAlign.Start,
-                        color = contentColorFor(Color(screen.backgroundColor)),
+                        color = Color.White,
                     )
                 }
             }

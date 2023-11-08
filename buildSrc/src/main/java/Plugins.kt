@@ -7,9 +7,10 @@ object Plugins {
     }
 
     object Hilt {
-        const val version = "2.44.2"
+        const val version = Libs.Dagger.version
 
         const val hiltGradle = "com.google.dagger.hilt.android"
+        const val hiltAndgroidGradle = "com.google.dagger:hilt-android-gradle-plugin"
     }
 
     object Kapt {

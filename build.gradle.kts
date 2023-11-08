@@ -3,6 +3,10 @@ buildscript {
         google()
         mavenCentral()
     }
+
+    dependencies {
+        classpath(Plugins.Hilt.hiltAndgroidGradle)
+    }
 }
 
 plugins {

@@ -82,7 +82,6 @@ val backgroundColors = listOf<ULong>(
     RetroNavy02Light.value,
     Red02Light.value,
 
-    Black01Basic.value,
     RetroPink03Basic.value,
     RetroBlue03Basic.value,
     RetroMint03Basic.value,

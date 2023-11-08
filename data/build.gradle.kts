@@ -7,13 +7,16 @@ plugins {
 }
 
 android {
-    namespace = "com.woogear.presentation"
+    namespace = "com.woogear.data"
     compileSdk = Config.compileSdk
 
     defaultConfig {
         minSdk = Config.minSdk
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -25,35 +28,24 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = Config.javaVersion
-        targetCompatibility = Config.javaVersion
-    }
+
     kotlinOptions {
         jvmTarget = Config.javaVersion.toString()
-    }
-
-    buildFeatures {
-        buildConfig = false
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Libs.AndroidX.Compose.Compiler.version
     }
 }
 
 dependencies {
     implementation(project(":domain"))
 
+    implementation(platform(Libs.OkHttp3.bom))
     implementation(Libs.AndroidX.Core.coreKtx)
-    implementation(Libs.AndroidX.Compose.Material.material)
+    implementation(Libs.AndroidX.Security.securityCrypto)
     implementation(Libs.Dagger.hiltAndroid)
-    implementation(Libs.Gson.gson)
     implementation(Libs.KotlinX.SerializationJson.serializationJson)
-    kapt(Libs.Dagger.hiltCompiler)
+    implementation(Libs.OkHttp3.okhttp)
+    implementation(Libs.OkHttp3.loggingInterceptor)
+    implementation(Libs.Retrofit2.kotlinxSerializationConverter)
+    implementation(Libs.Retrofit2.retrofit)
 
-    testImplementation(Libs.Junit.junit)
-    androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
-    androidTestImplementation(Libs.AndroidX.Test.Espresso.espressoCore)
+    kapt(Libs.Dagger.hiltCompiler)
 }

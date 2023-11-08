@@ -16,3 +16,5 @@ rootProject.name = "compose-note"
 
 include(":app")
 include(":presentation")
+include(":data")
+include(":domain")

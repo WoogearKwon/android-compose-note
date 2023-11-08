@@ -16,6 +16,7 @@ import com.woogear.presentation.R
 
 @Composable
 fun UnsplashScreen(
+    viewModel: UnsplashViewModel,
     onClickExit: () -> Unit
 ) {
     Scaffold(
