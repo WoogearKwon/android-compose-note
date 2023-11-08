@@ -84,14 +84,14 @@ val characterBorderColors = mapOf(
 )
 
 val basicColors = listOf(
-    Black01Basic,
-    RetroPink03Basic,
-    RetroBlue03Basic,
-    RetroMint03Basic,
-    RetroOrange03Basic,
-    RetroYellow03Basic,
-    RetroGreen03Basic,
-    RetroViolet03Basic,
-    RetroNavy03Basic,
-    Red03Basic,
+    Black01Basic.value,
+    RetroPink03Basic.value,
+    RetroBlue03Basic.value,
+    RetroMint03Basic.value,
+    RetroOrange03Basic.value,
+    RetroYellow03Basic.value,
+    RetroGreen03Basic.value,
+    RetroViolet03Basic.value,
+    RetroNavy03Basic.value,
+    Red03Basic.value,
 )

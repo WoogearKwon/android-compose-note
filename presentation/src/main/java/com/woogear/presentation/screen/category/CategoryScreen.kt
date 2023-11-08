@@ -54,6 +54,7 @@ fun CategoryScreen(
     ) {
         Screens(
             modifier = Modifier.padding(it),
+            screenCategory = screenCategory,
             screens = screenCategory.screens,
             onClickCategory = onClickComponent
         )
@@ -63,6 +64,7 @@ fun CategoryScreen(
 @Composable
 private fun Screens(
     modifier: Modifier = Modifier,
+    screenCategory: ScreenCategory,
     screens: List<Screen>,
     onClickCategory: (screenType: ScreenType) -> Unit
 ) {
@@ -78,7 +80,7 @@ private fun Screens(
                 modifier = Modifier
                     .padding(4.dp)
                     .height(itemWidth)
-                    .background(basicColors.random())
+                    .background(Color(screenCategory.backgroundColor))
                     .clickable { onClickCategory(screen.type) },
             ) {
                 Column(
@@ -112,6 +114,6 @@ data class CategoryArgs(
     val categoryType: ScreenCategory
 ) {
     companion object {
-        const val Key = "CategoryArgs"
+        const val Key = "ScreenCategory"
     }
 }

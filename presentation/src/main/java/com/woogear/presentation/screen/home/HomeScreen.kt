@@ -54,7 +54,7 @@ fun HomeScreen(
                         .fillMaxWidth()
                         .padding(10.dp)
                         .clickable { onClickCategory(category) },
-                    backgroundColor = basicColors.random(),
+                    backgroundColor = Color(category.backgroundColor),
                 ) {
                     Row(
                         modifier = Modifier.padding(18.dp),

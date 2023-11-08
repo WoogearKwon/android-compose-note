@@ -8,6 +8,7 @@ data class ScreenCategory(
     val description: String,
     val type: ScreenCategoryType,
     val screens: List<Screen>,
+    val backgroundColor: ULong,
 )
 
 enum class ScreenCategoryType {
@@ -21,6 +22,7 @@ data class Screen(
     val title: String,
     val description: String,
     val type: ScreenType,
+    val backgroundColor: ULong,
 )
 
 enum class ScreenType {

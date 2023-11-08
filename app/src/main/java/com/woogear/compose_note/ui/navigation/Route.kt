@@ -51,9 +51,15 @@ sealed class Route(val routePath: String) {
                     onClickExit = navController::popBackStack,
                     onClickComponent = { screenType ->
                         when (screenType) {
-                            ScreenType.BottomNavigation -> navController.navigate(routePath)
-                            ScreenType.CanvasChart -> navController.navigate(routePath)
-                            ScreenType.Unsplash -> navController.navigate(routePath)
+                            ScreenType.BottomNavigation -> {
+                                navController.navigate(BottomNav.getPath())
+                            }
+                            ScreenType.CanvasChart -> {
+                                navController.navigate(CanvasChart.getPath())
+                            }
+                            ScreenType.Unsplash -> {
+                                navController.navigate(Unsplash.getPath())
+                            }
                         }
                     }
                 )
@@ -62,6 +68,8 @@ sealed class Route(val routePath: String) {
     }
 
     object CanvasChart : Route(routePath = "/canvas/chart") {
+        fun getPath() = routePath
+
         fun NavGraphBuilder.canvasChart(navController: NavController) {
             composable(route = routePath) {
                 ChartScreen(
@@ -73,6 +81,8 @@ sealed class Route(val routePath: String) {
     }
 
     object BottomNav : Route(routePath = "/compose/bottom_nav") {
+        fun getPath() = routePath
+
         fun NavGraphBuilder.bottomNav(navController: NavController) {
             composable(route = routePath) {
                 BottomNavScreen()
@@ -81,6 +91,8 @@ sealed class Route(val routePath: String) {
     }
 
     object Unsplash : Route(routePath = "/compose/unsplash") {
+        fun getPath() = routePath
+
         fun NavGraphBuilder.unsplash(navController: NavController) {
             composable(route = routePath) {
                 UnsplashScreen(
