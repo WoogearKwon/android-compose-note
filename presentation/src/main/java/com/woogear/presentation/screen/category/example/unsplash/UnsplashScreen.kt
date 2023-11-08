@@ -11,6 +11,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.woogear.presentation.R
 
 @Composable
 fun UnsplashScreen(
@@ -25,7 +27,7 @@ fun UnsplashScreen(
                     }
                 },
                 title = {
-                    Text(text = "Unsplash Images")
+                    Text(text = stringResource(R.string.unsplash_images_title))
                 }
             )
         },

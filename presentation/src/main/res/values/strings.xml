@@ -1,9 +1,14 @@
 <resources>
+    <string name="app_name">presentation</string>
+
     <string name="home_title">Home</string>
 
-    <string name="app_name">presentation</string>
+    <string name="bottomnavigation_title">BottomNavigation</string>
     <string name="bottom_nav_tab_one">tab1</string>
     <string name="bottom_nav_tab_two">tab2</string>
     <string name="bottom_nav_tab_three">tab3</string>
     <string name="bottom_nav_tab_four">tab4</string>
+
+    <string name="chart_title">Chart</string>
+    <string name="unsplash_images_title">Unsplash Images</string>
 </resources>

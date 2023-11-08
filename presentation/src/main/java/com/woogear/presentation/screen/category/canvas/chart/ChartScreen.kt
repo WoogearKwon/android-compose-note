@@ -26,7 +26,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.woogear.presentation.R
 import com.woogear.presentation.component.chart.EasyChart
 import com.woogear.presentation.component.chart.ChartData
 import com.woogear.presentation.component.chart.ChartDuration
@@ -49,7 +51,7 @@ fun ChartScreen(
                     }
                 },
                 title = {
-                    Text(text = "Chart")
+                    Text(text = stringResource(R.string.chart_title))
                 }
             )
         },

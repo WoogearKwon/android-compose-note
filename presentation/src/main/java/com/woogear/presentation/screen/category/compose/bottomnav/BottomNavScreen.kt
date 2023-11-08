@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.woogear.presentation.R
 import com.woogear.presentation.screen.category.compose.bottomnav.tab_four.BottomNavTabFour
 import com.woogear.presentation.screen.category.compose.bottomnav.tab_one.BottomNavTabOne
 import com.woogear.presentation.screen.category.compose.bottomnav.tab_three.BottomNavTabThree
@@ -51,7 +52,7 @@ fun BottomNavScreen(
                     }
                 },
                 title = {
-                    Text(text = "BottomNavigation")
+                    Text(text = stringResource(R.string.bottomnavigation_title))
                 }
             )
         },
