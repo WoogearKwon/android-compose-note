@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -29,7 +30,6 @@ import androidx.compose.ui.unit.sp
 import com.woogear.presentation.model.Screen
 import com.woogear.presentation.model.ScreenCategory
 import com.woogear.presentation.model.ScreenType
-import com.woogear.presentation.theme.basicColors
 import kotlinx.serialization.Serializable
 
 @Composable
@@ -47,7 +47,9 @@ fun CategoryScreen(
                     }
                 },
                 title = {
-                    Text(text = screenCategory.title)
+                    Text(
+                        text = stringResource(id = screenCategory.titleRes)
+                    )
                 }
             )
         },
@@ -87,7 +89,7 @@ private fun Screens(
                 ) {
                     Text(
                         modifier = Modifier.padding(10.dp),
-                        text = screen.title,
+                        text = stringResource(id = screen.titleRes),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Start,
@@ -95,7 +97,7 @@ private fun Screens(
                     )
                     Text(
                         modifier = Modifier.padding(12.dp),
-                        text = screen.description,
+                        text = stringResource(id = screen.descriptionRes),
                         fontSize = 12.sp,
                         textAlign = TextAlign.Start,
                         color = Color.White,

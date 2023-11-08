@@ -1,11 +1,12 @@
 package com.woogear.presentation.model
 
+import androidx.annotation.StringRes
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class ScreenCategory(
-    val title: String,
-    val description: String,
+    @StringRes val titleRes: Int,
+    @StringRes val descriptionRes: Int,
     val type: ScreenCategoryType,
     val screens: List<Screen>,
     val backgroundColor: ULong,
@@ -19,8 +20,8 @@ enum class ScreenCategoryType {
 
 @Serializable
 data class Screen(
-    val title: String,
-    val description: String,
+    @StringRes val titleRes: Int,
+    @StringRes val descriptionRes: Int,
     val type: ScreenType,
     val backgroundColor: ULong,
 )

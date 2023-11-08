@@ -16,12 +16,13 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.woogear.presentation.R
 import com.woogear.presentation.model.ScreenCategory
-import com.woogear.presentation.theme.basicColors
 
 @Composable
 fun HomeScreen(
@@ -35,7 +36,7 @@ fun HomeScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Home",
+                        text = stringResource(id = R.string.home_title),
                         color = Color.White,
                         fontSize = 22.sp
                     )
@@ -61,7 +62,7 @@ fun HomeScreen(
                     ) {
                         Text(
                             modifier = Modifier.weight(1f),
-                            text = category.title,
+                            text = stringResource(id = category.titleRes),
                             textAlign = TextAlign.Start,
                             color = Color.White,
                             fontSize = 20.sp,
@@ -70,7 +71,7 @@ fun HomeScreen(
                         Spacer(modifier = Modifier.width(20.dp))
                         Text(
                             modifier = Modifier.weight(2f),
-                            text = category.description,
+                            text = stringResource(id = category.descriptionRes),
                             textAlign = TextAlign.Start,
                             color = Color.White
                         )

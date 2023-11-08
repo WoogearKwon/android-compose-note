@@ -1,3 +1,14 @@
 <resources>
-
+    <string name="compose_examples_title">Compose Examples</string>
+    <string name="compose_example_description">Example Screens Using Compose</string>
+    <string name="unsplash_demo_title">Unsplash Demo</string>
+    <string name="unsplash_description">Unsplash Images</string>
+    <string name="compose_catalogs_title">Compose Catalogs</string>
+    <string name="compose_catalogs_description">Compose UI Components Catalogs</string>
+    <string name="bottom_navigation_title">Bottom Navigation</string>
+    <string name="bottom_navigation_description">Bottom Navigation Tab Example</string>
+    <string name="canvas_drawings_title">Canvas Drawings</string>
+    <string name="canvas_drawings_description">Custom UI Components on Canvas</string>
+    <string name="canvas_chart_title">Canvas Chart</string>
+    <string name="canvas_chart_description">3 Types of Chart Component Draw on Canvas</string>
 </resources>

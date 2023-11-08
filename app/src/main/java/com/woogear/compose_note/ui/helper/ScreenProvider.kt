@@ -1,5 +1,6 @@
 package com.woogear.compose_note.ui.helper
 
+import com.woogear.compose_note.R
 import com.woogear.presentation.model.Screen
 import com.woogear.presentation.model.ScreenCategory
 import com.woogear.presentation.model.ScreenCategoryType
@@ -14,13 +15,13 @@ val appScreenCategories
     )
 
 private val composCatalogs = ScreenCategory(
-    title = "Compose Catalogs",
-    description = "Compose UI Components Catalogs",
+    titleRes = R.string.compose_catalogs_title,
+    descriptionRes = R.string.compose_catalogs_description,
     type = ScreenCategoryType.ComposeCatalog,
     screens = listOf(
         Screen(
-            title = "Bottom Navigation",
-            description = "Bottom Navigation Tab Example",
+            titleRes = R.string.bottom_navigation_title,
+            descriptionRes = R.string.bottom_navigation_description,
             type = ScreenType.BottomNavigation,
             backgroundColor = basicColors.random()
         ),
@@ -29,13 +30,13 @@ private val composCatalogs = ScreenCategory(
 )
 
 private val canvasDrawings = ScreenCategory(
-    title = "Canvas Drawings",
-    description = "Custom UI Components on Canvas",
+    titleRes = R.string.canvas_drawings_title,
+    descriptionRes = R.string.canvas_drawings_description,
     type = ScreenCategoryType.CanvasDrawing,
     screens = listOf(
         Screen(
-            title = "Canvas Chart",
-            description = "3 Types of Chart Component Draw on Canvas",
+            titleRes = R.string.canvas_chart_title,
+            descriptionRes = R.string.canvas_chart_description,
             type = ScreenType.CanvasChart,
             backgroundColor = basicColors.random()
         )
@@ -44,13 +45,13 @@ private val canvasDrawings = ScreenCategory(
 )
 
 private val composeExamples = ScreenCategory(
-    title = "Compose Examples",
-    description = "Example Screens Using Compose",
+    titleRes = R.string.compose_examples_title,
+    descriptionRes = R.string.compose_example_description,
     type = ScreenCategoryType.Example,
     screens = listOf(
         Screen(
-            title = "Unsplash Demo",
-            description = "Unsplash Images",
+            titleRes = R.string.unsplash_demo_title,
+            descriptionRes = R.string.unsplash_description,
             type = ScreenType.Unsplash,
             backgroundColor = basicColors.random()
         )
