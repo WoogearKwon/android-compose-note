@@ -41,19 +41,19 @@ data class NetworkUnsplashPhoto(
 @Serializable
 data class NetworkUnsplashPhotoUrls(
     @SerialName("raw")
-    val raw: String? = null,
+    val raw: String,
 
     @SerialName("full")
-    val full: String? = null,
+    val full: String,
 
     @SerialName("regular")
-    val regular: String? = null,
+    val regular: String,
 
     @SerialName("thumb")
-    val thumb: String? = null,
+    val thumb: String,
 
     @SerialName("small_s3")
-    val smallS3: String? = null,
+    val smallS3: String,
 )
 
 fun NetworkUnsplashPhoto.asDomainModel(): UnsplashPhoto {

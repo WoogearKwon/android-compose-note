@@ -45,6 +45,7 @@ dependencies {
     implementation(Libs.AndroidX.Compose.Ui.uiToolingPreview)
     implementation(Libs.AndroidX.Compose.Ui.uiUtil)
     implementation(Libs.AndroidX.Lifecycle.lifecycleRuntimeKtx)
+    implementation(Libs.AndroidX.Lifecycle.lifecycleRuntimeCompose)
     implementation(Libs.Coil.coilCompose)
     implementation(Libs.Dagger.hiltAndroid)
     implementation(Libs.Gson.gson)

@@ -14,9 +14,9 @@ data class UnsplashPhoto(
 )
 
 data class UnsplashPhotoUrls(
-    val raw: String? = null,
-    val full: String? = null,
-    val regular: String? = null,
-    val thumb: String? = null,
-    val smallS3: String? = null,
+    val raw: String,
+    val full: String,
+    val regular: String,
+    val thumb: String,
+    val smallS3: String,
 )

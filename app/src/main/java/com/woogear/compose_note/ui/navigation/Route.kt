@@ -15,7 +15,7 @@ import com.woogear.presentation.screen.category.CategoryArgs
 import com.woogear.presentation.screen.category.CategoryScreen
 import com.woogear.presentation.screen.category.canvas.chart.ChartScreen
 import com.woogear.presentation.screen.category.compose.bottomnav.BottomNavScreen
-import com.woogear.presentation.screen.category.example.unsplash.UnsplashScreen
+import com.woogear.presentation.screen.category.example.unsplash.UnsplashPhotosScreen
 import com.woogear.presentation.screen.home.HomeScreen
 
 sealed class Route(val routePath: String) {
@@ -98,7 +98,7 @@ sealed class Route(val routePath: String) {
 
         fun NavGraphBuilder.unsplash(navController: NavController) {
             composable(route = routePath) {
-                UnsplashScreen(
+                UnsplashPhotosScreen(
                     viewModel = hiltViewModel(),
                     onClickExit = navController::popBackStack
                 )

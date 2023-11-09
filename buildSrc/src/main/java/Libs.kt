@@ -51,6 +51,8 @@ object Libs {
             private const val version = "2.6.2"
 
             const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
+            const val lifecycleRuntimeCompose =
+                "androidx.lifecycle:lifecycle-runtime-compose:$version"
         }
 
         object Navigation {
