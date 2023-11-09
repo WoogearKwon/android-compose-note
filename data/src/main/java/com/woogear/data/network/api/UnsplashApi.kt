@@ -1,11 +1,11 @@
 package com.woogear.data.network.api
 
-import kotlinx.serialization.json.JsonObject
-import retrofit2.Call
+import com.woogear.data.helper.response.ApiResponse
+import com.woogear.data.network.dto.response.NetworkUnsplashPhoto
 import retrofit2.http.GET
 
 interface UnsplashApi {
 
-    @GET("photos/random")
-    suspend fun getRandomPhotos(): Call<JsonObject>
+    @GET("photos")
+    suspend fun getPhotos(): ApiResponse<List<NetworkUnsplashPhoto>>
 }

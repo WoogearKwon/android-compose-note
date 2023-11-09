@@ -13,10 +13,14 @@ class UnsplashViewModel @Inject constructor(
 ) : ViewModel() {
 
     init {
-        getRandomPhotos()
+        getPhotos()
     }
 
-    private fun getRandomPhotos() = viewModelScope.launch {
-
+    private fun getPhotos() = viewModelScope.launch {
+        try {
+            unsplashRepository.getPhotos()
+        } catch (e: Exception) {
+            println(e.stackTraceToString())
+        }
     }
 }

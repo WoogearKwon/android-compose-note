@@ -1,6 +1,5 @@
 package com.woogear.data.helper.response
 
-import android.util.Log
 import okhttp3.Request
 import okhttp3.ResponseBody
 import okio.Timeout
