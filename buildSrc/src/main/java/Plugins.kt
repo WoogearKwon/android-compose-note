@@ -6,6 +6,12 @@ object Plugins {
         const val libraryGradle = "com.android.library"
     }
 
+    object GoogleServices {
+        private const val version = "4.3.15"
+        const val googleServices = "com.google.gms:google-services:$version"
+        const val googleServicesGradle = "com.google.gms.google-services"
+    }
+
     object Hilt {
         const val version = Libs.Dagger.version
 
@@ -31,5 +37,11 @@ object Plugins {
             const val serialization = "kotlinx-serialization"
             const val serializationGradle = "org.jetbrains.kotlin.plugin.serialization"
         }
+    }
+
+    object MapsSecret {
+        const val version = "2.0.1"
+        const val mapsSecretGradle =
+            "com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
     }
 }

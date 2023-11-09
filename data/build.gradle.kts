@@ -3,6 +3,7 @@ plugins {
     id(Plugins.Kotlin.androidGradle)
     id(Plugins.Hilt.hiltGradle)
     id(Plugins.Kapt.kapt)
+    id(Plugins.MapsSecret.mapsSecretGradle)
     id(Plugins.KotlinX.Serialization.serialization)
 }
 

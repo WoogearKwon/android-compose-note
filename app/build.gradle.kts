@@ -3,6 +3,7 @@ plugins {
     id(Plugins.Kotlin.androidGradle)
     id(Plugins.Hilt.hiltGradle)
     id(Plugins.Kapt.kapt)
+    id(Plugins.MapsSecret.mapsSecretGradle)
 }
 
 android {
@@ -31,13 +32,7 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = Config.javaVersion
-        targetCompatibility = Config.javaVersion
-    }
-    kotlinOptions {
-        jvmTarget = Config.javaVersion.toString()
-    }
+
     buildFeatures {
         compose = true
     }
@@ -51,22 +46,25 @@ android {
     }
 }
 
+secrets {
+    defaultPropertiesFileName = "secrets.properties"
+}
+
 dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":presentation"))
-
-    implementation(Libs.AndroidX.Core.coreKtx)
-    implementation(Libs.AndroidX.Lifecycle.lifecycleRuntimeKtx)
     implementation(Libs.AndroidX.Activity.activityCompose)
+    implementation(Libs.AndroidX.Core.coreKtx)
     implementation(Libs.AndroidX.Compose.Material.material)
     implementation(Libs.AndroidX.Compose.Ui.ui)
     implementation(Libs.AndroidX.Compose.Ui.uiToolingPreview)
     implementation(Libs.AndroidX.Compose.Ui.uiUtil)
-    implementation(Libs.Coil.coilCompose)
-    implementation(Libs.AndroidX.Navigation.navigationCompose)
-    implementation(Libs.Dagger.hiltAndroid)
     implementation(Libs.AndroidX.Hilt.hiltNavigationCompose)
+    implementation(Libs.AndroidX.Lifecycle.lifecycleRuntimeKtx)
+    implementation(Libs.AndroidX.Navigation.navigationCompose)
+    implementation(Libs.Coil.coilCompose)
+    implementation(Libs.Dagger.hiltAndroid)
     implementation(Libs.KotlinX.SerializationJson.serializationJson)
     kapt(Libs.Dagger.hiltCompiler)
 

@@ -25,13 +25,6 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = Config.javaVersion
-        targetCompatibility = Config.javaVersion
-    }
-    kotlinOptions {
-        jvmTarget = Config.javaVersion.toString()
-    }
 
     buildFeatures {
         buildConfig = false
@@ -45,15 +38,16 @@ android {
 
 dependencies {
     implementation(project(":domain"))
-
+    implementation(Libs.AndroidX.Activity.activityCompose)
     implementation(Libs.AndroidX.Core.coreKtx)
     implementation(Libs.AndroidX.Compose.Material.material)
+    implementation(Libs.AndroidX.Compose.Ui.ui)
+    implementation(Libs.AndroidX.Compose.Ui.uiToolingPreview)
+    implementation(Libs.AndroidX.Compose.Ui.uiUtil)
+    implementation(Libs.AndroidX.Lifecycle.lifecycleRuntimeKtx)
+    implementation(Libs.Coil.coilCompose)
     implementation(Libs.Dagger.hiltAndroid)
     implementation(Libs.Gson.gson)
     implementation(Libs.KotlinX.SerializationJson.serializationJson)
     kapt(Libs.Dagger.hiltCompiler)
-
-    testImplementation(Libs.Junit.junit)
-    androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
-    androidTestImplementation(Libs.AndroidX.Test.Espresso.espressoCore)
 }

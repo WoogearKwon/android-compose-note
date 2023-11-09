@@ -5,6 +5,7 @@ buildscript {
     }
 
     dependencies {
+        classpath(Plugins.GoogleServices.googleServices)
         classpath(Plugins.Hilt.hiltAndgroidGradle)
     }
 }
@@ -14,5 +15,6 @@ plugins {
     id(Plugins.Android.libraryGradle)  version Plugins.Android.version apply false
     id(Plugins.Kotlin.androidGradle) version Plugins.Kotlin.version apply false
     id(Plugins.Hilt.hiltGradle) version Plugins.Hilt.version apply false
+    id(Plugins.MapsSecret.mapsSecretGradle) version Plugins.MapsSecret.version apply false
     id(Plugins.KotlinX.Serialization.serializationGradle) version Plugins.KotlinX.Serialization.version apply false
 }

@@ -48,7 +48,7 @@ object Libs {
         }
 
         object Lifecycle {
-            private const val version = "2.5.1"
+            private const val version = "2.6.2"
 
             const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
         }
