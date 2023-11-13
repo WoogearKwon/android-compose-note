@@ -1,6 +1,7 @@
 package com.woogear.data.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.woogear.data.BuildConfig
 import com.woogear.data.helper.EnumConverterFactory
 import com.woogear.data.helper.interceptor.RequestHeaderInterceptor
 import com.woogear.data.helper.response.NetworkResponseAdapterFactory
@@ -13,6 +14,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -35,6 +37,17 @@ object NetworkModule {
             .client(
                 OkHttpClient.Builder()
                     .addInterceptor(headerInterceptor)
+                    .addInterceptor(
+                        HttpLoggingInterceptor().apply {
+                            setLevel(
+                                if (BuildConfig.DEBUG) {
+                                    HttpLoggingInterceptor.Level.BODY
+                                } else {
+                                    HttpLoggingInterceptor.Level.BASIC
+                                }
+                            )
+                        }
+                    )
                     .build()
             )
             .addCallAdapterFactory(NetworkResponseAdapterFactory())
