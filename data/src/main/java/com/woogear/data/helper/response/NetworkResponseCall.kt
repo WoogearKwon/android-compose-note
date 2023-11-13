@@ -7,6 +7,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Converter
 import retrofit2.Response
+import timber.log.Timber
 import java.io.IOException
 
 class NetworkResponseCall<S : Any, E : Any>(
@@ -58,7 +59,7 @@ class NetworkResponseCall<S : Any, E : Any>(
             }
 
             override fun onFailure(call: Call<S>, throwable: Throwable) {
-                throwable.printStackTrace()
+                Timber.e(throwable.message)
 
                 val networkResponse = when (throwable) {
                     is IOException -> NetworkResponse.NetworkError(throwable)

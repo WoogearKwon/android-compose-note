@@ -66,6 +66,7 @@ dependencies {
     implementation(Libs.Coil.coilCompose)
     implementation(Libs.Dagger.hiltAndroid)
     implementation(Libs.KotlinX.SerializationJson.serializationJson)
+    implementation(Libs.Timber.timber)
     kapt(Libs.Dagger.hiltCompiler)
 
     testImplementation(Libs.Junit.junit)

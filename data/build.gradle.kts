@@ -45,6 +45,7 @@ dependencies {
     implementation(Libs.KotlinX.SerializationJson.serializationJson)
     implementation(Libs.OkHttp3.okhttp)
     implementation(Libs.OkHttp3.loggingInterceptor)
+    implementation(Libs.Timber.timber)
     implementation(Libs.Retrofit2.kotlinxSerializationConverter)
     implementation(Libs.Retrofit2.retrofit)
 
