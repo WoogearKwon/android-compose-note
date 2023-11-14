@@ -7,6 +7,8 @@
     <string name="compose_catalogs_description">Compose UI Components Catalogs</string>
     <string name="bottom_navigation_title">Bottom Navigation</string>
     <string name="bottom_navigation_description">Bottom Navigation Tab Example</string>
+    <string name="top_tabs_title">Top Tabs Navigation</string>
+    <string name="top_tabs_description">Top Tabs with LazyColumn</string>
     <string name="canvas_drawings_title">Canvas Drawings</string>
     <string name="canvas_drawings_description">Custom UI Components on Canvas</string>
     <string name="canvas_chart_title">Canvas Chart</string>

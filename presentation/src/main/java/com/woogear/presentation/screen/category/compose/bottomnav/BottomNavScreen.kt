@@ -47,7 +47,7 @@ fun BottomNavScreen(
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    IconButton(onClick = { onClickExit.invoke() }) {
+                    IconButton(onClick = onClickExit) {
                         Icon(Icons.Filled.ArrowBack, contentDescription = null)
                     }
                 },

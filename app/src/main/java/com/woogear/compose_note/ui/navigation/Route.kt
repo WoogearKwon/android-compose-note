@@ -15,6 +15,7 @@ import com.woogear.presentation.screen.category.CategoryArgs
 import com.woogear.presentation.screen.category.CategoryScreen
 import com.woogear.presentation.screen.category.canvas.chart.ChartScreen
 import com.woogear.presentation.screen.category.compose.bottomnav.BottomNavScreen
+import com.woogear.presentation.screen.category.compose.toptabs.TopTabsWithColumnScreen
 import com.woogear.presentation.screen.category.example.unsplash.UnsplashPhotosScreen
 import com.woogear.presentation.screen.home.HomeScreen
 
@@ -55,14 +56,42 @@ sealed class Route(val routePath: String) {
                             ScreenType.BottomNavigation -> {
                                 navController.navigate(BottomNav.getPath())
                             }
+                            ScreenType.TopTabsWithColumn -> {
+                                navController.navigate(TopTabsWithColumn.getPath())
+                            }
                             ScreenType.CanvasChart -> {
                                 navController.navigate(CanvasChart.getPath())
                             }
                             ScreenType.Unsplash -> {
                                 navController.navigate(Unsplash.getPath())
                             }
+
                         }
                     }
+                )
+            }
+        }
+    }
+
+    object BottomNav : Route(routePath = "/compose/bottom_nav") {
+        fun getPath() = routePath
+
+        fun NavGraphBuilder.bottomNav(navController: NavController) {
+            composable(route = routePath) {
+                BottomNavScreen(
+                    onClickExit = navController::popBackStack
+                )
+            }
+        }
+    }
+
+    object TopTabsWithColumn : Route(routePath = "/compose/top_tabs_with_column") {
+        fun getPath() = routePath
+
+        fun NavGraphBuilder.topTabsWithColumn(navController: NavController) {
+            composable(route = routePath) {
+                TopTabsWithColumnScreen(
+                    onClickExit = navController::popBackStack
                 )
             }
         }
@@ -75,18 +104,6 @@ sealed class Route(val routePath: String) {
             composable(route = routePath) {
                 ChartScreen(
                     viewModel = hiltViewModel(),
-                    onClickExit = navController::popBackStack
-                )
-            }
-        }
-    }
-
-    object BottomNav : Route(routePath = "/compose/bottom_nav") {
-        fun getPath() = routePath
-
-        fun NavGraphBuilder.bottomNav(navController: NavController) {
-            composable(route = routePath) {
-                BottomNavScreen(
                     onClickExit = navController::popBackStack
                 )
             }
