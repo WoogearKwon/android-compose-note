@@ -32,6 +32,12 @@ private val composCatalogs = ScreenCategory(
             type = ScreenType.TopTabsWithColumn,
             backgroundColor = backgroundColors.random()
         ),
+        Screen(
+            titleRes = R.string.auto_sized_text_title,
+            descriptionRes = R.string.auto_sized_text_description,
+            type = ScreenType.AutoSizingText,
+            backgroundColor = backgroundColors.random()
+        )
     ),
     backgroundColor = backgroundColors.random()
 )

@@ -8,6 +8,10 @@
     <string name="bottom_nav_tab_two">tab2</string>
     <string name="bottom_nav_tab_three">tab3</string>
     <string name="bottom_nav_tab_four">tab4</string>
+    <string name="top_tabs_with_column_title">Top Tabs with Column</string>
+    <string name="auto_sizing_text_title">Auto-Sizing Text</string>
+    <string name="auto_sizing_text_sample_short">orem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="auto_sizing_text_sample_long">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
 
     <string name="chart_title">Chart</string>
     <string name="unsplash_images_title">Unsplash Images</string>

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.woogear.compose_note.ui.navigation.Route.AutoSizingText.autoSizingText
 import com.woogear.compose_note.ui.navigation.Route.BottomNav.bottomNav
 import com.woogear.compose_note.ui.navigation.Route.CanvasChart.canvasChart
 import com.woogear.compose_note.ui.navigation.Route.Category.composeCatalogScreen
@@ -27,6 +28,7 @@ fun AppNavHost(
 
         bottomNav(navController = navController)
         topTabsWithColumn(navController = navController)
+        autoSizingText(navController = navController)
         canvasChart(navController = navController)
         unsplash(navController = navController)
     }

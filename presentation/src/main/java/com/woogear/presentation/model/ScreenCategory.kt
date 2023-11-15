@@ -29,6 +29,7 @@ data class Screen(
 enum class ScreenType {
     BottomNavigation,
     TopTabsWithColumn,
+    AutoSizingText,
     CanvasChart,
     Unsplash,
 }

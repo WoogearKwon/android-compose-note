@@ -9,6 +9,8 @@
     <string name="bottom_navigation_description">Bottom Navigation Tab Example</string>
     <string name="top_tabs_title">Top Tabs Navigation</string>
     <string name="top_tabs_description">Top Tabs with LazyColumn</string>
+    <string name="auto_sized_text_title">Auto-Sized Text </string>
+    <string name="auto_sized_text_description">Auto-Sizing Text by Screen Ratio</string>
     <string name="canvas_drawings_title">Canvas Drawings</string>
     <string name="canvas_drawings_description">Custom UI Components on Canvas</string>
     <string name="canvas_chart_title">Canvas Chart</string>

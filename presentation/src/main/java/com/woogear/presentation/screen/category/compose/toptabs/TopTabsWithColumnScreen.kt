@@ -91,7 +91,7 @@ fun TopTabsWithColumnScreen(
                     }
                 },
                 title = {
-                    Text(text = stringResource(R.string.bottomnavigation_title))
+                    Text(text = stringResource(R.string.top_tabs_with_column_title))
                 }
             )
         },

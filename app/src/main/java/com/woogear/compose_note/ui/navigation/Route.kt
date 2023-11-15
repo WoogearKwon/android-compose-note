@@ -14,6 +14,7 @@ import com.woogear.presentation.model.ScreenType
 import com.woogear.presentation.screen.category.CategoryArgs
 import com.woogear.presentation.screen.category.CategoryScreen
 import com.woogear.presentation.screen.category.canvas.chart.ChartScreen
+import com.woogear.presentation.screen.category.compose.autosizingtext.AutoSizingTextScreen
 import com.woogear.presentation.screen.category.compose.bottomnav.BottomNavScreen
 import com.woogear.presentation.screen.category.compose.toptabs.TopTabsWithColumnScreen
 import com.woogear.presentation.screen.category.example.unsplash.UnsplashPhotosScreen
@@ -56,16 +57,22 @@ sealed class Route(val routePath: String) {
                             ScreenType.BottomNavigation -> {
                                 navController.navigate(BottomNav.getPath())
                             }
+
                             ScreenType.TopTabsWithColumn -> {
                                 navController.navigate(TopTabsWithColumn.getPath())
                             }
+
                             ScreenType.CanvasChart -> {
                                 navController.navigate(CanvasChart.getPath())
                             }
+
                             ScreenType.Unsplash -> {
                                 navController.navigate(Unsplash.getPath())
                             }
 
+                            ScreenType.AutoSizingText -> {
+                                navController.navigate(AutoSizingText.getPath())
+                            }
                         }
                     }
                 )
@@ -91,6 +98,18 @@ sealed class Route(val routePath: String) {
         fun NavGraphBuilder.topTabsWithColumn(navController: NavController) {
             composable(route = routePath) {
                 TopTabsWithColumnScreen(
+                    onClickExit = navController::popBackStack
+                )
+            }
+        }
+    }
+
+    object AutoSizingText : Route(routePath = "/compose/auto_sizing_text") {
+        fun getPath() = routePath
+
+        fun NavGraphBuilder.autoSizingText(navController: NavController) {
+            composable(route = routePath) {
+                AutoSizingTextScreen(
                     onClickExit = navController::popBackStack
                 )
             }
