@@ -58,6 +58,7 @@ private val myBoxes = listOf(
 
 @Composable
 fun TopTabsWithColumnScreen(
+    modifier: Modifier = Modifier,
     boxes: List<ColorBox> = myBoxes,
     onClickExit: () -> Unit,
 ) {
@@ -82,7 +83,7 @@ fun TopTabsWithColumnScreen(
     }
 
     Scaffold(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         topBar = {
             TopAppBar(
                 navigationIcon = {

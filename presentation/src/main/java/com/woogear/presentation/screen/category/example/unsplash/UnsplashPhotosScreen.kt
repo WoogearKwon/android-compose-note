@@ -27,12 +27,14 @@ import com.woogear.presentation.R
 
 @Composable
 fun UnsplashPhotosScreen(
+    modifier: Modifier = Modifier,
     viewModel: UnsplashPhotosViewModel,
     onClickExit: () -> Unit,
 ) {
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
 
     Scaffold(
+        modifier = modifier,
         topBar = {
             TopAppBar(
                 navigationIcon = {

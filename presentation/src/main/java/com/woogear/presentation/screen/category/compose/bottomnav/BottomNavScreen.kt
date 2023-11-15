@@ -38,12 +38,13 @@ import com.woogear.presentation.screen.category.compose.bottomnav.tab_two.Bottom
 
 @Composable
 fun BottomNavScreen(
+    modifier: Modifier = Modifier,
     onClickExit: () -> Unit,
 ) {
     var selectedTab by remember { mutableStateOf(BottomNavTab.TabOne) }
 
     Scaffold(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         topBar = {
             TopAppBar(
                 navigationIcon = {

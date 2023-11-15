@@ -44,12 +44,11 @@ sealed class Route(val routePath: String) {
         }
 
         fun NavGraphBuilder.composeCatalogScreen(navController: NavController) {
-            composable(
-                route = routePath,
-            ) { backStackEntry ->
+            composable(route = routePath) { backStackEntry ->
                 val args: CategoryArgs = backStackEntry.getRequiredArgument(CategoryArgs.Key)
 
                 CategoryScreen(
+                    modifier = Modifier.imePadding(),
                     screenCategory = args.categoryType,
                     onClickExit = navController::popBackStack,
                     onClickComponent = { screenType ->
@@ -86,6 +85,7 @@ sealed class Route(val routePath: String) {
         fun NavGraphBuilder.bottomNav(navController: NavController) {
             composable(route = routePath) {
                 BottomNavScreen(
+                    modifier = Modifier.imePadding(),
                     onClickExit = navController::popBackStack
                 )
             }
@@ -98,6 +98,7 @@ sealed class Route(val routePath: String) {
         fun NavGraphBuilder.topTabsWithColumn(navController: NavController) {
             composable(route = routePath) {
                 TopTabsWithColumnScreen(
+                    modifier = Modifier.imePadding(),
                     onClickExit = navController::popBackStack
                 )
             }
@@ -110,6 +111,7 @@ sealed class Route(val routePath: String) {
         fun NavGraphBuilder.autoSizingText(navController: NavController) {
             composable(route = routePath) {
                 AutoSizingTextScreen(
+                    modifier = Modifier.imePadding(),
                     onClickExit = navController::popBackStack
                 )
             }
@@ -122,6 +124,7 @@ sealed class Route(val routePath: String) {
         fun NavGraphBuilder.canvasChart(navController: NavController) {
             composable(route = routePath) {
                 ChartScreen(
+                    modifier = Modifier.imePadding(),
                     viewModel = hiltViewModel(),
                     onClickExit = navController::popBackStack
                 )
@@ -135,6 +138,7 @@ sealed class Route(val routePath: String) {
         fun NavGraphBuilder.unsplash(navController: NavController) {
             composable(route = routePath) {
                 UnsplashPhotosScreen(
+                    modifier = Modifier.imePadding(),
                     viewModel = hiltViewModel(),
                     onClickExit = navController::popBackStack
                 )

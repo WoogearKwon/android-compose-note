@@ -14,7 +14,7 @@ object Libs {
         }
 
         object Compose {
-            private const val bomVersion = "2023.06.01"
+            private const val bomVersion = "2023.10.01"
             const val bom = "androidx.compose:compose-bom:$bomVersion"
 
             object Compiler {

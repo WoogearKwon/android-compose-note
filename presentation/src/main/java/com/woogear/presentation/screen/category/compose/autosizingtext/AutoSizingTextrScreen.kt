@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -41,10 +42,11 @@ import com.woogear.presentation.theme.backgroundColors
 
 @Composable
 fun AutoSizingTextScreen(
+    modifier: Modifier = Modifier,
     onClickExit: () -> Unit,
 ) {
     Scaffold(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.systemBarsPadding(),
         topBar = {
             TopAppBar(
                 navigationIcon = {
@@ -57,10 +59,10 @@ fun AutoSizingTextScreen(
                 }
             )
         },
-    ) { innerPadding ->
+    ) {
         Column(
             modifier = Modifier
-                .padding(innerPadding)
+                .padding(it)
                 .padding(10.dp)
         ) {
             CardBox(

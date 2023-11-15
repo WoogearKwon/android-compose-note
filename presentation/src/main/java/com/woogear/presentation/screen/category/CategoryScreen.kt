@@ -34,11 +34,13 @@ import kotlinx.serialization.Serializable
 
 @Composable
 fun CategoryScreen(
+    modifier: Modifier = Modifier,
     screenCategory: ScreenCategory,
     onClickExit: () -> Unit,
     onClickComponent: (type: ScreenType) -> Unit,
 ) {
     Scaffold(
+        modifier = modifier,
         topBar = {
             TopAppBar(
                 navigationIcon = {

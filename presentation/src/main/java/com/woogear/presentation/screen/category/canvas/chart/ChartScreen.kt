@@ -39,10 +39,12 @@ import com.woogear.presentation.component.chart.drawer.LineChartDrawer
 
 @Composable
 fun ChartScreen(
+    modifier: Modifier = Modifier,
     viewModel: ChartViewModel,
     onClickExit: () -> Unit,
 ) {
     Scaffold(
+        modifier = modifier,
         topBar = {
             TopAppBar(
                 navigationIcon = {
