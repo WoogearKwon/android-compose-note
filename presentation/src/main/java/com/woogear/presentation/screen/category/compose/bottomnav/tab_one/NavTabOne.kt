@@ -5,13 +5,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.woogear.presentation.theme.RetroPink03Basic
+import com.woogear.presentation.theme.palettePink400
 
 @Composable
 fun BottomNavTabOne(
     modifier: Modifier = Modifier.fillMaxSize()
 ) {
     Box(
-        modifier = modifier.background(RetroPink03Basic),
+        modifier = modifier.background(palettePink400),
     )
 }
