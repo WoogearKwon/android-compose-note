@@ -18,6 +18,7 @@ import com.woogear.presentation.screen.category.compose.autosizingtext.AutoSizin
 import com.woogear.presentation.screen.category.compose.bottomnav.BottomNavScreen
 import com.woogear.presentation.screen.category.compose.toptabs.TopTabsWithColumnScreen
 import com.woogear.presentation.screen.category.example.unsplash.UnsplashPhotosScreen
+import com.woogear.presentation.screen.category.compose.stickyheader.StickyHeaderScreen
 import com.woogear.presentation.screen.home.HomeScreen
 
 sealed class Route(val routePath: String) {
@@ -53,6 +54,7 @@ sealed class Route(val routePath: String) {
                     onClickExit = navController::popBackStack,
                     onClickComponent = { screenType ->
                         when (screenType) {
+                            // Compose Catalogs
                             ScreenType.BottomNavigation -> {
                                 navController.navigate(BottomNav.getPath())
                             }
@@ -61,17 +63,25 @@ sealed class Route(val routePath: String) {
                                 navController.navigate(TopTabsWithColumn.getPath())
                             }
 
-                            ScreenType.CanvasChart -> {
-                                navController.navigate(CanvasChart.getPath())
-                            }
-
-                            ScreenType.Unsplash -> {
-                                navController.navigate(Unsplash.getPath())
-                            }
 
                             ScreenType.AutoSizingText -> {
                                 navController.navigate(AutoSizingText.getPath())
                             }
+
+                            ScreenType.StickyHeader -> {
+                                navController.navigate(StickyHeader.getPath())
+                            }
+
+                            // Canvas
+                            ScreenType.CanvasChart -> {
+                                navController.navigate(CanvasChart.getPath())
+                            }
+
+                            // Compose demo
+                            ScreenType.Unsplash -> {
+                                navController.navigate(Unsplash.getPath())
+                            }
+
                         }
                     }
                 )
@@ -111,6 +121,19 @@ sealed class Route(val routePath: String) {
         fun NavGraphBuilder.autoSizingText(navController: NavController) {
             composable(route = routePath) {
                 AutoSizingTextScreen(
+                    modifier = Modifier.imePadding(),
+                    onClickExit = navController::popBackStack
+                )
+            }
+        }
+    }
+
+    object StickyHeader : Route(routePath = "/compose/sticky_header") {
+        fun getPath() = routePath
+
+        fun NavGraphBuilder.stickyHeader(navController: NavController) {
+            composable(route = routePath) {
+                StickyHeaderScreen(
                     modifier = Modifier.imePadding(),
                     onClickExit = navController::popBackStack
                 )

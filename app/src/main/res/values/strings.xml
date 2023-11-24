@@ -1,8 +1,6 @@
 <resources>
-    <string name="compose_examples_title">Compose Examples</string>
-    <string name="compose_example_description">Example Screens Using Compose</string>
-    <string name="unsplash_demo_title">Unsplash Demo</string>
-    <string name="unsplash_description">Unsplash Images</string>
+
+    <!--compose-->
     <string name="compose_catalogs_title">Compose Catalogs</string>
     <string name="compose_catalogs_description">Compose UI Components Catalogs</string>
     <string name="bottom_navigation_title">Bottom Navigation</string>
@@ -11,8 +9,18 @@
     <string name="top_tabs_description">Top Tabs with LazyColumn</string>
     <string name="auto_sized_text_title">Auto-Sized Text </string>
     <string name="auto_sized_text_description">Auto-Sizing Text by Screen Ratio</string>
+    <string name="sticky_header_title">Sticky Header with List</string>
+    <string name="sticky_header_description">Sticky header is dynamically sticky with the top item of the list</string>
+
+    <!--canvas-->
     <string name="canvas_drawings_title">Canvas Drawings</string>
     <string name="canvas_drawings_description">Custom UI Components on Canvas</string>
     <string name="canvas_chart_title">Canvas Chart</string>
     <string name="canvas_chart_description">3 Types of Chart Component Draw on Canvas</string>
+
+    <!--demo-->
+    <string name="compose_examples_title">Compose Examples</string>
+    <string name="compose_example_description">Example Screens Using Compose</string>
+    <string name="unsplash_demo_title">Unsplash Demo</string>
+    <string name="unsplash_description">Unsplash Images</string>
 </resources>

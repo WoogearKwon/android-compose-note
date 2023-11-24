@@ -30,6 +30,7 @@ enum class ScreenType {
     BottomNavigation,
     TopTabsWithColumn,
     AutoSizingText,
+    StickyHeader,
     CanvasChart,
     Unsplash,
 }

@@ -37,7 +37,13 @@ private val composCatalogs = ScreenCategory(
             descriptionRes = R.string.auto_sized_text_description,
             type = ScreenType.AutoSizingText,
             backgroundColor = backgroundColors.random()
-        )
+        ),
+        Screen(
+            titleRes = R.string.sticky_header_title,
+            descriptionRes = R.string.sticky_header_description,
+            type = ScreenType.StickyHeader,
+            backgroundColor = backgroundColors.random()
+        ),
     ),
     backgroundColor = backgroundColors.random()
 )
