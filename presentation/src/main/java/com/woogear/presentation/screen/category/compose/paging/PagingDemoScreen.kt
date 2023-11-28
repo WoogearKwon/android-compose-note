@@ -75,7 +75,7 @@ fun PagingDemoScreen(
                     ) {
                         Text(
                             modifier = Modifier.fillMaxWidth(),
-                            text = nameItems[i]?.name ?: "noname",
+                            text = nameItems[i]?.name ?: "unknown",
                             textAlign = TextAlign.Center,
                             style = TextStyle(
                                 fontSize = 44.sp,

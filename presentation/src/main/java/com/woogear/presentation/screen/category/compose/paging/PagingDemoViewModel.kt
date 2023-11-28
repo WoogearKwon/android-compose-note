@@ -17,21 +17,27 @@ class PagingDemoViewModel(
 ) : ViewModel() {
     val demoPagesFlow: Flow<PagingData<BibleName>> = Pager(
         config = PagingConfig(
-            pageSize = 15,
-            initialLoadSize = 15,
+            pageSize = PAGE_SIZE,
+            initialLoadSize = PAGE_SIZE * 2,
             enablePlaceholders = false,
-            prefetchDistance = 14
         ),
         pagingSourceFactory = {
             DemoPagingSource(repository)
         }
     ).flow
+
+    companion object {
+        const val PAGE_SIZE = 20
+    }
 }
 
 class PagingDemoRepository {
-    suspend fun getPage(pageIndex: Int): PagingDemoData {
-        delay(1000L)
-        return MockNames.pages[pageIndex]
+    suspend fun getPage(
+        pageIndex: Int,
+        loadSize: Int,
+    ): PagingDemoData {
+        delay(1500L)
+        return MockNames.getPages(loadSize)[pageIndex]
     }
 }
 
@@ -48,7 +54,7 @@ class DemoPagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, BibleName> {
         val pageIndex = params.key ?: INITIAL_PAGE
-        val result = repository.getPage(pageIndex)
+        val result = repository.getPage(pageIndex, params.loadSize)
 
         return LoadResult.Page(
             data = result.names,

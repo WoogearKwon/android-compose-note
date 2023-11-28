@@ -2,7 +2,7 @@ package com.woogear.presentation.screen.category.compose.paging.model
 
 object BibleNames {
     val random get() = names.random()
-    val names = listOf(
+    private val names = listOf(
         "Aaron",
         "Abagtha",
         "Abda",
