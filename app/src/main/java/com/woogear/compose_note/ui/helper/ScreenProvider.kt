@@ -44,6 +44,12 @@ private val composCatalogs = ScreenCategory(
             type = ScreenType.StickyHeader,
             backgroundColor = backgroundColors.random()
         ),
+        Screen(
+            titleRes = R.string.paging_demo_title,
+            descriptionRes = R.string.paging_demo_description,
+            type = ScreenType.PagingDemo,
+            backgroundColor = backgroundColors.random()
+        )
     ),
     backgroundColor = backgroundColors.random()
 )

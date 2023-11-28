@@ -16,6 +16,7 @@ import com.woogear.presentation.screen.category.CategoryScreen
 import com.woogear.presentation.screen.category.canvas.chart.ChartScreen
 import com.woogear.presentation.screen.category.compose.autosizingtext.AutoSizingTextScreen
 import com.woogear.presentation.screen.category.compose.bottomnav.BottomNavScreen
+import com.woogear.presentation.screen.category.compose.paging.PagingDemoScreen
 import com.woogear.presentation.screen.category.compose.toptabs.TopTabsWithColumnScreen
 import com.woogear.presentation.screen.category.example.unsplash.UnsplashPhotosScreen
 import com.woogear.presentation.screen.category.compose.stickyheader.StickyHeaderScreen
@@ -70,6 +71,10 @@ sealed class Route(val routePath: String) {
 
                             ScreenType.StickyHeader -> {
                                 navController.navigate(StickyHeader.getPath())
+                            }
+
+                            ScreenType.PagingDemo -> {
+                                navController.navigate(PagingDemo.getPath())
                             }
 
                             // Canvas
@@ -140,6 +145,21 @@ sealed class Route(val routePath: String) {
             }
         }
     }
+
+    object PagingDemo : Route(routePath = "/compose/paging") {
+        fun getPath() = routePath
+
+        fun NavGraphBuilder.pagingDemo(navController: NavController) {
+            composable(route = routePath) {
+                PagingDemoScreen(
+                    modifier = Modifier.imePadding(),
+                    viewModel = hiltViewModel(),
+                    onClickExit = navController::popBackStack
+                )
+            }
+        }
+    }
+
 
     object CanvasChart : Route(routePath = "/canvas/chart") {
         fun getPath() = routePath

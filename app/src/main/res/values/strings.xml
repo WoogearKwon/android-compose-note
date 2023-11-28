@@ -11,6 +11,8 @@
     <string name="auto_sized_text_description">Auto-Sizing Text by Screen Ratio</string>
     <string name="sticky_header_title">Sticky Header with List</string>
     <string name="sticky_header_description">Sticky header is dynamically sticky with the top item of the list</string>
+    <string name="paging_demo_title">Paging Demo</string>
+    <string name="paging_demo_description">Paging Demo UI</string>
 
     <!--canvas-->
     <string name="canvas_drawings_title">Canvas Drawings</string>

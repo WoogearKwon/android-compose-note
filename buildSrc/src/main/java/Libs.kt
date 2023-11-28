@@ -61,6 +61,12 @@ object Libs {
             const val navigationCompose = "androidx.navigation:navigation-compose:$version"
         }
 
+        object Paging {
+            private const val version = "3.2.1"
+            const val paging = "androidx.paging:paging-runtime-ktx:$version"
+            const val pagingCompose = "androidx.paging:paging-compose:$version"
+        }
+
         object SavedState {
             private const val version = "1.2.0"
 

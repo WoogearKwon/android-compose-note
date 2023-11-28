@@ -31,6 +31,7 @@ enum class ScreenType {
     TopTabsWithColumn,
     AutoSizingText,
     StickyHeader,
+    PagingDemo,
     CanvasChart,
     Unsplash,
 }

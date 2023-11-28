@@ -46,6 +46,8 @@ dependencies {
     implementation(Libs.AndroidX.Compose.Ui.uiUtil)
     implementation(Libs.AndroidX.Lifecycle.lifecycleRuntimeKtx)
     implementation(Libs.AndroidX.Lifecycle.lifecycleRuntimeCompose)
+    implementation(Libs.AndroidX.Paging.paging)
+    implementation(Libs.AndroidX.Paging.pagingCompose)
     implementation(Libs.Coil.coilCompose)
     implementation(Libs.Dagger.hiltAndroid)
     implementation(Libs.Gson.gson)
