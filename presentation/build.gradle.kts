@@ -52,5 +52,6 @@ dependencies {
     implementation(Libs.Dagger.hiltAndroid)
     implementation(Libs.Gson.gson)
     implementation(Libs.KotlinX.SerializationJson.serializationJson)
+    implementation(Libs.Timber.timber)
     kapt(Libs.Dagger.hiltCompiler)
 }
