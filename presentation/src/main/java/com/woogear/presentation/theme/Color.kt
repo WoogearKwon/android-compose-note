@@ -396,6 +396,7 @@ val paletteGray35070p = Color(0xB3757E8C)
 val paletteGray35050p = Color(0x80757E8C)
 val paletteGray35030p = Color(0x4A757E8C)
 
+val paletteGray500 = Color(0xFFF3F3F3)
 val paletteGray700 = Color(0xFFE5E8ED)
 val paletteGray70090p = Color(0xE6E5E8ED)
 val paletteGray70070p = Color(0xB3E5E8ED)
