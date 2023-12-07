@@ -14,6 +14,7 @@ import com.woogear.presentation.model.ScreenType
 import com.woogear.presentation.screen.category.CategoryArgs
 import com.woogear.presentation.screen.category.CategoryScreen
 import com.woogear.presentation.screen.category.canvas.chart.ChartScreen
+import com.woogear.presentation.screen.category.canvas.progress.CanvasProgressScreen
 import com.woogear.presentation.screen.category.compose.autosizingtext.AutoSizingTextScreen
 import com.woogear.presentation.screen.category.compose.bottomnav.BottomNavScreen
 import com.woogear.presentation.screen.category.compose.paging.PagingDemoScreen
@@ -78,8 +79,12 @@ sealed class Route(val routePath: String) {
                             }
 
                             // Canvas
-                            ScreenType.CanvasChart -> {
+                            ScreenType.ChartView -> {
                                 navController.navigate(CanvasChart.getPath())
+                            }
+
+                            ScreenType.ProgressView -> {
+                                navController.navigate(CanvasProgress.getPath())
                             }
 
                             // Compose demo
@@ -172,6 +177,19 @@ sealed class Route(val routePath: String) {
                 ChartScreen(
                     modifier = Modifier.imePadding(),
                     viewModel = hiltViewModel(),
+                    onClickExit = navController::popBackStack
+                )
+            }
+        }
+    }
+
+    object CanvasProgress : Route(routePath = "/canvas/progress") {
+        fun getPath() = routePath
+
+        fun NavGraphBuilder.canvasProgress(navController: NavController) {
+            composable(route = routePath) {
+                CanvasProgressScreen(
+                    modifier = Modifier.imePadding(),
                     onClickExit = navController::popBackStack
                 )
             }

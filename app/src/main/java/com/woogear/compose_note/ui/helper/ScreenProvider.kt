@@ -62,9 +62,15 @@ private val canvasDrawings = ScreenCategory(
         Screen(
             titleRes = R.string.canvas_chart_title,
             descriptionRes = R.string.canvas_chart_description,
-            type = ScreenType.CanvasChart,
+            type = ScreenType.ChartView,
             backgroundColor = backgroundColors.random()
-        )
+        ),
+        Screen(
+            titleRes = R.string.canvas_progress_title,
+            descriptionRes = R.string.canvas_progress_description,
+            type = ScreenType.ProgressView,
+            backgroundColor = backgroundColors.random()
+        ),
     ),
     backgroundColor = backgroundColors.random()
 )

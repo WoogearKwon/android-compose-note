@@ -32,7 +32,8 @@ enum class ScreenType {
     AutoSizingText,
     StickyHeader,
     PagingDemo,
-    CanvasChart,
+    ChartView,
+    ProgressView,
     Unsplash,
     VerticalTimeline,
 }

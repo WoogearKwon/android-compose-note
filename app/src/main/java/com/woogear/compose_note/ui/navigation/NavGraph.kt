@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import com.woogear.compose_note.ui.navigation.Route.AutoSizingText.autoSizingText
 import com.woogear.compose_note.ui.navigation.Route.BottomNav.bottomNav
 import com.woogear.compose_note.ui.navigation.Route.CanvasChart.canvasChart
+import com.woogear.compose_note.ui.navigation.Route.CanvasProgress.canvasProgress
 import com.woogear.compose_note.ui.navigation.Route.Category.composeCatalogScreen
 import com.woogear.compose_note.ui.navigation.Route.Home.homeScreen
 import com.woogear.compose_note.ui.navigation.Route.PagingDemo.pagingDemo
@@ -35,6 +36,7 @@ fun AppNavHost(
         stickyHeader(navController = navController)
         pagingDemo(navController = navController)
         canvasChart(navController = navController)
+        canvasProgress(navController = navController)
         unsplash(navController = navController)
         verticalTimeline(navController = navController)
     }

@@ -19,6 +19,8 @@
     <string name="canvas_drawings_description">Custom UI Components on Canvas</string>
     <string name="canvas_chart_title">Canvas Chart</string>
     <string name="canvas_chart_description">3 Types of Chart Component Draw on Canvas</string>
+    <string name="canvas_progress_title">Canvas Progress</string>
+    <string name="canvas_progress_description">Custom Canvas Progress View</string>
 
     <!--demo-->
     <string name="compose_examples_title">Compose Examples</string>
