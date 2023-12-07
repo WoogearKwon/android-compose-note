@@ -80,7 +80,6 @@ fun AutoSizingTextScreen(
             Text(text = "Height = ${firstCardHeight.toInt()}dp")
             Spacer(modifier = Modifier.height(10.dp))
             CardBox(
-//                height = firstCardHeight.dp,
                 background = paletteYellow100,
             ) {
                 AutoSizedText(

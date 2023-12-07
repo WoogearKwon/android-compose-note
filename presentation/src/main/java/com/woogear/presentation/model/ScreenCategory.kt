@@ -34,4 +34,5 @@ enum class ScreenType {
     PagingDemo,
     CanvasChart,
     Unsplash,
+    VerticalTimeline,
 }

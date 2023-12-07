@@ -25,4 +25,6 @@
     <string name="compose_example_description">Example Screens Using Compose</string>
     <string name="unsplash_demo_title">Unsplash Demo</string>
     <string name="unsplash_description">Unsplash Images</string>
+    <string name="vertical_timeline_title">Vertical Timeline</string>
+    <string name="vertical_timeline_description">Vertically linked timeline card view</string>
 </resources>

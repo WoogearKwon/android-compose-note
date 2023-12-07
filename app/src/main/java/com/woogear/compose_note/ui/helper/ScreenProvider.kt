@@ -79,7 +79,14 @@ private val composeExamples = ScreenCategory(
             descriptionRes = R.string.unsplash_description,
             type = ScreenType.Unsplash,
             backgroundColor = backgroundColors.random()
+        ),
+        Screen(
+            titleRes = R.string.vertical_timeline_title,
+            descriptionRes = R.string.vertical_timeline_description,
+            type = ScreenType.VerticalTimeline,
+            backgroundColor = backgroundColors.random()
         )
+
     ),
     backgroundColor = backgroundColors.random()
 )

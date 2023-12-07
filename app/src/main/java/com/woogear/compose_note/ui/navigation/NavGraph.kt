@@ -13,6 +13,7 @@ import com.woogear.compose_note.ui.navigation.Route.PagingDemo.pagingDemo
 import com.woogear.compose_note.ui.navigation.Route.StickyHeader.stickyHeader
 import com.woogear.compose_note.ui.navigation.Route.TopTabsWithColumn.topTabsWithColumn
 import com.woogear.compose_note.ui.navigation.Route.Unsplash.unsplash
+import com.woogear.compose_note.ui.navigation.Route.VerticalTimeline.verticalTimeline
 
 @Composable
 fun AppNavHost(
@@ -35,5 +36,6 @@ fun AppNavHost(
         pagingDemo(navController = navController)
         canvasChart(navController = navController)
         unsplash(navController = navController)
+        verticalTimeline(navController = navController)
     }
 }

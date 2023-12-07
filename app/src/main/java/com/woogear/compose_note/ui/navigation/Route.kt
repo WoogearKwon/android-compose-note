@@ -20,6 +20,7 @@ import com.woogear.presentation.screen.category.compose.paging.PagingDemoScreen
 import com.woogear.presentation.screen.category.compose.toptabs.TopTabsWithColumnScreen
 import com.woogear.presentation.screen.category.example.unsplash.UnsplashPhotosScreen
 import com.woogear.presentation.screen.category.compose.stickyheader.StickyHeaderScreen
+import com.woogear.presentation.screen.category.example.timeline.VerticalTimelineScreen
 import com.woogear.presentation.screen.home.HomeScreen
 
 sealed class Route(val routePath: String) {
@@ -64,7 +65,6 @@ sealed class Route(val routePath: String) {
                                 navController.navigate(TopTabsWithColumn.getPath())
                             }
 
-
                             ScreenType.AutoSizingText -> {
                                 navController.navigate(AutoSizingText.getPath())
                             }
@@ -87,6 +87,9 @@ sealed class Route(val routePath: String) {
                                 navController.navigate(Unsplash.getPath())
                             }
 
+                            ScreenType.VerticalTimeline -> {
+                                navController.navigate(VerticalTimeline.getPath())
+                            }
                         }
                     }
                 )
@@ -175,12 +178,26 @@ sealed class Route(val routePath: String) {
         }
     }
 
-    object Unsplash : Route(routePath = "/compose/unsplash") {
+    object Unsplash : Route(routePath = "/example/unsplash") {
         fun getPath() = routePath
 
         fun NavGraphBuilder.unsplash(navController: NavController) {
             composable(route = routePath) {
                 UnsplashPhotosScreen(
+                    modifier = Modifier.imePadding(),
+                    viewModel = hiltViewModel(),
+                    onClickExit = navController::popBackStack
+                )
+            }
+        }
+    }
+
+    object VerticalTimeline : Route(routePath = "/example/vertical_timeline") {
+        fun getPath() = routePath
+
+        fun NavGraphBuilder.verticalTimeline(navController: NavController) {
+            composable(route = routePath) {
+                VerticalTimelineScreen(
                     modifier = Modifier.imePadding(),
                     viewModel = hiltViewModel(),
                     onClickExit = navController::popBackStack
