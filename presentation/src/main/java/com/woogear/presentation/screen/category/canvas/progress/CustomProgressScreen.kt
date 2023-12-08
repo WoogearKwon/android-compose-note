@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.woogear.presentation.R
 import com.woogear.presentation.theme.paletteBlue010
+import com.woogear.presentation.theme.paletteBlue070
 
 @Composable
 fun CanvasProgressScreen(
@@ -69,9 +70,11 @@ fun CanvasProgressScreen(
 private fun CustomProgressBar(
     modifier: Modifier = Modifier,
     percentage: Float,
-    radius: Dp = 50.dp,
-    color: Color = paletteBlue010,
-    strokeWidth: Dp = 8.dp,
+    radius: Dp = 100.dp,
+    color: Color = paletteBlue070,
+    backgroundColor: Color = paletteBlue010,
+    strokeWidth: Dp = 18.dp,
+    backgroundStrokeWith: Dp = 16.dp,
     animDuration: Int = 1000,
     animDelay: Int = 0,
 ) {
@@ -79,7 +82,7 @@ private fun CustomProgressBar(
         mutableStateOf(true)
     }
     val curPercentage = animateFloatAsState(
-        targetValue = if (animationPlayed) 0f else percentage,
+        targetValue = if (animationPlayed) percentage else 0f,
         animationSpec = tween(
             durationMillis = animDuration,
             delayMillis = animDelay
@@ -108,6 +111,12 @@ private fun CustomProgressBar(
                 sweepAngle = 360 * curPercentage.value,
                 useCenter = false,
                 style = Stroke(strokeWidth.toPx(), cap = StrokeCap.Round)
+            )
+
+            drawCircle(
+                color = backgroundColor,
+                radius = radius.toPx(),
+                style = Stroke(backgroundStrokeWith.toPx(), cap = StrokeCap.Round)
             )
         }
         Text(
