@@ -53,5 +53,6 @@ dependencies {
     implementation(Libs.Gson.gson)
     implementation(Libs.KotlinX.SerializationJson.serializationJson)
     implementation(Libs.Timber.timber)
+    debugImplementation("androidx.compose.ui:ui-tooling:1.5.4")
     kapt(Libs.Dagger.hiltCompiler)
 }

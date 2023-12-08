@@ -32,16 +32,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.woogear.presentation.R
 import com.woogear.presentation.theme.paletteBlue070
 import com.woogear.presentation.theme.paletteYellow100
-import timber.log.Timber
 
 @Composable
 fun AutoSizingTextScreen(
@@ -207,3 +206,10 @@ private enum class TextScaleType {
     WIDTH
 }
 
+@Preview
+@Composable
+private fun AutoSizeableTextView_Preview() {
+    AutoSizingTextScreen(
+        onClickExit = {}
+    )
+}
