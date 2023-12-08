@@ -360,6 +360,7 @@ val paletteYellow10070p = Color(0xB3FFC24A)
 val paletteYellow10050p = Color(0x80FFC24A)
 val paletteYellow10030p = Color(0x4AFFC24A)
 
+val paletteBlue010 = Color(0xFF98D8FF)
 val paletteBlue070 = Color(0xFF46B1F3)
 val paletteBlue07090p = Color(0xE646B1F3)
 val paletteBlue07070p = Color(0xB346B1F3)
