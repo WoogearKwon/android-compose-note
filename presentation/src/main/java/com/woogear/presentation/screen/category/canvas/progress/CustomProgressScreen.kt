@@ -22,17 +22,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.times
 import com.woogear.presentation.R
 import com.woogear.presentation.theme.paletteBlue010
 import com.woogear.presentation.theme.paletteBlue100
+import kotlin.math.cos
+import kotlin.math.sin
 
 @Composable
 fun CanvasProgressScreen(
@@ -97,24 +102,46 @@ private fun CustomProgressBar(
                 .size(radius * 2f)
                 .fillMaxSize()
         ) {
-            drawCircle(
-                color = backgroundColor,
-                radius = radius.toPx(),
-                style = Stroke(
-                    width = backgroundStrokeWidth.toPx(),
-                    cap = StrokeCap.Round,
+            drawIntoCanvas {
+                val centerX = size.width / 2
+                val centerY = size.height / 2
+
+                drawCircle(
+                    color = backgroundColor,
+                    radius = radius.toPx(),
+                    style = Stroke(
+                        width = backgroundStrokeWidth.toPx(),
+                        cap = StrokeCap.Round,
+                    )
                 )
-            )
-            drawArc(
-                color = color,
-                startAngle = -90f,
-                sweepAngle = 360 * curPercentage.value,
-                useCenter = false,
-                style = Stroke(
-                    width = strokeWidth.toPx(),
-                    cap = StrokeCap.Round,
+                drawArc(
+                    color = color,
+                    startAngle = -90f,
+                    sweepAngle = 360 * curPercentage.value,
+                    useCenter = false,
+                    style = Stroke(
+                        width = strokeWidth.toPx(),
+                        cap = StrokeCap.Round,
+                    )
                 )
-            )
+
+                val radiansX = Math.toRadians(360.0 * curPercentage.value - 90)
+                val radiansY = Math.toRadians(360.0 * curPercentage.value - 90)
+                val cos = cos(radiansX)
+                val sin = sin(radiansY)
+                val px = cos.toFloat() * radius.toPx() + centerX
+                val py = sin.toFloat() * radius.toPx() + centerY
+
+                drawCircle(
+                    color = Color.White,
+                    radius = 1f,
+                    center = Offset(px, py),
+                    style = Stroke(
+                        width = (strokeWidth / 2).toPx(),
+                        cap = StrokeCap.Round,
+                    )
+                )
+            }
         }
         Text(
             text = (curPercentage.value * 100).toInt().toString(),
