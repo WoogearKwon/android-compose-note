@@ -42,7 +42,6 @@ dependencies {
     implementation(Libs.AndroidX.Core.coreKtx)
     implementation(Libs.AndroidX.Compose.Material.material)
     implementation(Libs.AndroidX.Compose.Ui.ui)
-    implementation(Libs.AndroidX.Compose.Ui.uiToolingPreview)
     implementation(Libs.AndroidX.Compose.Ui.uiUtil)
     implementation(Libs.AndroidX.Lifecycle.lifecycleRuntimeKtx)
     implementation(Libs.AndroidX.Lifecycle.lifecycleRuntimeCompose)
@@ -53,6 +52,11 @@ dependencies {
     implementation(Libs.Gson.gson)
     implementation(Libs.KotlinX.SerializationJson.serializationJson)
     implementation(Libs.Timber.timber)
-    debugImplementation("androidx.compose.ui:ui-tooling:1.5.4")
+    implementation(Libs.AndroidX.Test.Monitor.monitor)
     kapt(Libs.Dagger.hiltCompiler)
+
+    androidTestImplementation(Libs.AndroidX.Test.Ext.junit)
+    androidTestImplementation(Libs.Junit.junit)
+    debugImplementation(Libs.AndroidX.Compose.Ui.uiToolingPreview)
+    debugImplementation(Libs.AndroidX.Compose.Ui.uiTooling)
 }

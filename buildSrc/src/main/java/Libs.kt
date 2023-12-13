@@ -89,6 +89,12 @@ object Libs {
             object Ext {
                 const val junit = "androidx.test.ext:junit:1.1.5"
             }
+
+            object Monitor {
+                private const val version = "1.6.1"
+
+                const val monitor = "androidx.test:monitor:$version"
+            }
         }
     }
 
