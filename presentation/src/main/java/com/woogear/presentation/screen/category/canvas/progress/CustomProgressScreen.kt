@@ -25,6 +25,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.woogear.presentation.R
 import com.woogear.presentation.theme.paletteBlue010
@@ -68,20 +70,27 @@ fun CanvasProgressScreen(
             )
             Text(
                 modifier = Modifier,
-                text = (percentage * 100).toInt().toString(),
+                text = "${(percentage * 100).toInt()}%",
                 color = paletteBlue100,
-                fontSize = 60.sp,
+                fontSize = 50.sp,
                 style = TextStyle(
                     fontWeight = FontWeight.ExtraBold,
                     brush = Brush.linearGradient(
                         colors = listOf(Color.Black, paletteBlue100, paletteBlue010),
                     ),
-                    shadow = Shadow(
-                        offset = Offset(5f, 5f),
-                        blurRadius = 8f
-                    )
                 )
             )
         }
     }
+}
+
+@Preview(
+    showBackground = true,
+    backgroundColor = 0xFFFFFF,
+)
+@Composable
+private fun CanvasProgressScreen_Preview() {
+    CanvasProgressScreen(
+        onClickExit = {}
+    )
 }

@@ -71,13 +71,15 @@ fun EasyCircularProgressIndicator(
                 backgroundColor = backgroundColor,
                 backgroundStrokeWidth = backgroundStrokeWidth
             )
-            drawProgressArc(
-                radius = radius,
-                color = progressColor,
-                curPercentage = curPercentage,
-                progressStrokeWidth = progressStrokeWidth,
-                pointerColor = pointerColor,
-            )
+            if (percentage != 0f) {
+                drawProgressArc(
+                    radius = radius,
+                    color = progressColor,
+                    curPercentage = curPercentage,
+                    progressStrokeWidth = progressStrokeWidth,
+                    pointerColor = pointerColor,
+                )
+            }
         }
     }
 }
@@ -127,6 +129,8 @@ fun DrawScope.drawProgressArc(
                 Color(0x0DFFFFFF),
                 Color(0x0DFFFFFF),
                 Color(0x00FFFFFF),
+                Color(0x00FFFFFF),
+                Color(0x00FFFFFF),
             ),
             tileMode = TileMode.Decal
         ),
@@ -166,7 +170,6 @@ fun DrawScope.drawProgressArc(
 @Preview(
     showBackground = true,
     backgroundColor = 0xFFFFFF,
-    widthDp = 400,
     heightDp = 300,
 )
 @Composable
@@ -174,7 +177,6 @@ private fun CanvasProgressScreen_Preview() {
     EasyCircularProgressIndicator(
         modifier = Modifier.padding(10.dp),
         percentage = 0.7f,
-        startPercentage = 0.5f,
         onChangePercentage = {}
     )
 }
