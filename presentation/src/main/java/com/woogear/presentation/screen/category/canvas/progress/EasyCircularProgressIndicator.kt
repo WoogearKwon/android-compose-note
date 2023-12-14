@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
@@ -63,7 +64,6 @@ fun EasyCircularProgressIndicator(
     Canvas(
         modifier = modifier
             .size(radius * 2f)
-            .fillMaxSize()
     ) {
         drawIntoCanvas {
             drawBackgroundCircle(
@@ -107,6 +107,9 @@ fun DrawScope.drawProgressArc(
 ) {
     val centerX = size.width / 2
     val centerY = size.height / 2
+    val startX = cos(Math.toRadians(180.0)).toFloat() * radius.toPx() + centerX
+    val startY = sin(Math.toRadians(-90.0)).toFloat() * radius.toPx() + centerY
+
     // ex) Math.toRadians(180) == 3.14(π)
     val radians = Math.toRadians(360.0 * curPercentage - 90f)
     val cos = cos(radians).toFloat() // radius-height ratio
@@ -114,6 +117,7 @@ fun DrawScope.drawProgressArc(
     val px = cos * radius.toPx() + centerX
     val py = sin * radius.toPx() + centerY
 
+    // pointer shadow
     drawCircle(
         brush = Brush.radialGradient(
             center = Offset(px, py),
@@ -134,16 +138,20 @@ fun DrawScope.drawProgressArc(
             cap = StrokeCap.Round,
         ),
     )
+    // progressStroke
     drawArc(
         color = color,
         startAngle = -90f,
         sweepAngle = 360 * curPercentage,
         useCenter = false,
+        topLeft = Offset(startX, startY),
+        size = Size(width = radius.toPx() * 2f, height = radius.toPx() * 2f),
         style = Stroke(
             width = progressStrokeWidth.toPx(),
             cap = StrokeCap.Round,
         )
     )
+    // pointer
     drawCircle(
         color = pointerColor,
         radius = 1f,
@@ -155,7 +163,12 @@ fun DrawScope.drawProgressArc(
     )
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFFFFFF)
+@Preview(
+    showBackground = true,
+    backgroundColor = 0xFFFFFF,
+    widthDp = 400,
+    heightDp = 300,
+)
 @Composable
 private fun CanvasProgressScreen_Preview() {
     EasyCircularProgressIndicator(
