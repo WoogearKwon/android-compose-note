@@ -23,12 +23,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -69,6 +74,7 @@ fun CanvasProgressScreen(
     }
 }
 
+@OptIn(ExperimentalTextApi::class)
 @Composable
 private fun CustomProgressBar(
     modifier: Modifier = Modifier,
@@ -123,8 +129,14 @@ private fun CustomProgressBar(
         }
         Text(
             text = (curPercentage * 100).toInt().toString(),
-            color = Color.Black,
-            fontSize = 22.sp
+            color = progressColor,
+            fontSize = 60.sp,
+            style = TextStyle(
+                fontWeight = FontWeight.ExtraBold,
+                brush = Brush.linearGradient(
+                    colors = listOf(Color.Black, progressColor, backgroundColor),
+                )
+            )
         )
     }
 }
