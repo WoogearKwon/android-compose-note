@@ -32,7 +32,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.times
 import com.woogear.presentation.R
 import com.woogear.presentation.theme.paletteBlue010
 import com.woogear.presentation.theme.paletteBlue100
@@ -125,19 +124,19 @@ private fun CustomProgressBar(
                     )
                 )
 
-                val radiansX = Math.toRadians(360.0 * curPercentage.value - 90)
-                val radiansY = Math.toRadians(360.0 * curPercentage.value - 90)
-                val cos = cos(radiansX)
-                val sin = sin(radiansY)
-                val px = cos.toFloat() * radius.toPx() + centerX
-                val py = sin.toFloat() * radius.toPx() + centerY
+                // ex) Math.toRadians(180) == 3.14(π)
+                val radians = Math.toRadians(360.0 * curPercentage.value - 90)
+                val cos = cos(radians).toFloat() // radius-height ratio
+                val sin = sin(radians).toFloat() // radius-hypotenuse ratio
+                val px = cos * radius.toPx() + centerX
+                val py = sin * radius.toPx() + centerY
 
                 drawCircle(
                     color = Color.White,
                     radius = 1f,
                     center = Offset(px, py),
                     style = Stroke(
-                        width = (strokeWidth / 2).toPx(),
+                        width = (strokeWidth / 3).toPx(),
                         cap = StrokeCap.Round,
                     )
                 )
