@@ -3,6 +3,7 @@ package com.woogear.presentation.screen.category.canvas.progress
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -15,10 +16,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
@@ -35,13 +34,12 @@ import kotlin.math.sin
 fun EasyCircularProgressIndicator(
     modifier: Modifier = Modifier,
     percentage: Float,
-    radius: Dp = 100.dp,
     progressColor: Color = paletteBlue100,
     backgroundColor: Color = paletteBlue010,
     progressStrokeWidth: Dp = 22.dp,
     backgroundStrokeWidth: Dp = 16.dp,
     pointerColor: Color = White,
-    animDuration: Int = 1000,
+    durationInMilliseconds: Int = 1000,
     animDelay: Int = 0,
     startPercentage: Float = 0f,
     onChangePercentage: (Float) -> Unit,
@@ -50,7 +48,7 @@ fun EasyCircularProgressIndicator(
     val curPercentage by animateFloatAsState(
         targetValue = if (animationPlayed) percentage else startPercentage,
         animationSpec = tween(
-            durationMillis = animDuration,
+            durationMillis = durationInMilliseconds,
             delayMillis = animDelay
         ),
         label = "",
@@ -63,8 +61,17 @@ fun EasyCircularProgressIndicator(
 
     Canvas(
         modifier = modifier
-            .size(radius * 2f)
+            .fillMaxSize()
+            .defaultMinSize(
+                minWidth = EasyProgressDefaults.minSize,
+                minHeight = EasyProgressDefaults.minSize
+            )
     ) {
+        val diameter = if (size.width < size.height) size.width else size.height
+        val radius =
+            if (diameter == 0f) EasyProgressDefaults.minRadius
+            else (diameter / 2).toDp()
+
         drawIntoCanvas {
             drawBackgroundCircle(
                 radius = radius,
@@ -120,28 +127,28 @@ fun DrawScope.drawProgressArc(
     val py = sin * radius.toPx() + centerY
 
     // pointer shadow
-    drawCircle(
-        brush = Brush.radialGradient(
-            center = Offset(px, py),
-            colors = listOf(
-                Color(0xFF000000),
-                Color(0x80FFFFFF),
-                Color(0x0DFFFFFF),
-                Color(0x0DFFFFFF),
-                Color(0x00FFFFFF),
-                Color(0x00FFFFFF),
-                Color(0x00FFFFFF),
-            ),
-            tileMode = TileMode.Decal
-        ),
-        radius = 1f,
-        center = Offset(px, py),
-        alpha = 0.2f,
-        style = Stroke(
-            width = progressStrokeWidth.toPx() * 3f,
-            cap = StrokeCap.Round,
-        ),
-    )
+//    drawCircle(
+//        brush = Brush.radialGradient(
+//            center = Offset(px, py),
+//            colors = listOf(
+//                Color(0xFF2E2E2E),
+//                Color(0x80FFFFFF),
+//                Color(0x0DFFFFFF),
+//                Color(0x0DFFFFFF),
+//                Color(0x00FFFFFF),
+//                Color(0x00FFFFFF),
+//                Color(0x00FFFFFF),
+//            ),
+//            tileMode = TileMode.Decal
+//        ),
+//        radius = 1f,
+//        center = Offset(px, py),
+//        alpha = 0.2f,
+//        style = Stroke(
+//            width = progressStrokeWidth.toPx() * 3f,
+//            cap = StrokeCap.Round,
+//        ),
+//    )
     // progressStroke
     drawArc(
         color = color,
@@ -167,15 +174,21 @@ fun DrawScope.drawProgressArc(
     )
 }
 
+object EasyProgressDefaults {
+    val minSize = 200.dp
+    val minRadius = minSize / 2
+}
+
 @Preview(
     showBackground = true,
     backgroundColor = 0xFFFFFF,
-    heightDp = 300,
 )
 @Composable
 private fun CanvasProgressScreen_Preview() {
     EasyCircularProgressIndicator(
-        modifier = Modifier.padding(10.dp),
+        modifier = Modifier
+            .size(200.dp)
+            .padding(10.dp),
         percentage = 0.7f,
         onChangePercentage = {}
     )
