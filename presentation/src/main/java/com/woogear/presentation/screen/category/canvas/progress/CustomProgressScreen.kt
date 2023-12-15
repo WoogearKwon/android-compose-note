@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -59,7 +58,8 @@ fun CanvasProgressScreen(
             )
         },
     ) {
-        var percentage by remember { mutableStateOf(0f) }
+        var progressValue by remember { mutableStateOf(70f) }
+        var animatedValue by remember { mutableStateOf(0f) }
 
         Column(
             modifier = modifier
@@ -74,15 +74,16 @@ fun CanvasProgressScreen(
                 EasyCircularProgressIndicator(
                     modifier = Modifier
                         .padding(it),
-                    percentage = 0.7f,
-                    onChangePercentage = {
-                        percentage = it
+                    value = progressValue,
+                    goalValue = 100f,
+                    onValueChanged = {
+                        animatedValue = it
                     }
                 )
                 Text(
                     modifier = Modifier
                         .align(Alignment.Center),
-                    text = "${(percentage * 100).toInt()}%",
+                    text = "${(animatedValue * 100).toInt()}%",
                     color = paletteBlue100,
                     fontSize = 50.sp,
                     style = TextStyle(
@@ -97,9 +98,11 @@ fun CanvasProgressScreen(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(20.dp),
-                onClick = { }
+                onClick = {
+                    progressValue = (0..100).random().toFloat()
+                }
             ) {
-                Text(text = "show again")
+                Text(text = "change value")
             }
         }
     }

@@ -33,7 +33,8 @@ import kotlin.math.sin
 @Composable
 fun EasyCircularProgressIndicator(
     modifier: Modifier = Modifier,
-    percentage: Float,
+    value : Float,
+    goalValue: Float,
     progressColor: Color = paletteBlue100,
     backgroundColor: Color = paletteBlue010,
     progressStrokeWidth: Dp = 22.dp,
@@ -41,12 +42,12 @@ fun EasyCircularProgressIndicator(
     pointerColor: Color = White,
     durationInMilliseconds: Int = 1000,
     animDelay: Int = 0,
-    startPercentage: Float = 0f,
-    onChangePercentage: (Float) -> Unit,
+    startValue: Float = 0f,
+    onValueChanged: (Float) -> Unit,
 ) {
     var animationPlayed by remember { mutableStateOf(false) }
-    val curPercentage by animateFloatAsState(
-        targetValue = if (animationPlayed) percentage else startPercentage,
+    val animatedValue by animateFloatAsState(
+        targetValue = if (animationPlayed) value / goalValue else startValue,
         animationSpec = tween(
             durationMillis = durationInMilliseconds,
             delayMillis = animDelay
@@ -55,8 +56,8 @@ fun EasyCircularProgressIndicator(
     )
 
     LaunchedEffect(key1 = true) { animationPlayed = true }
-    LaunchedEffect(key1 = curPercentage) {
-        onChangePercentage(curPercentage)
+    LaunchedEffect(key1 = animatedValue) {
+        onValueChanged(animatedValue)
     }
 
     Canvas(
@@ -78,13 +79,14 @@ fun EasyCircularProgressIndicator(
                 backgroundColor = backgroundColor,
                 backgroundStrokeWidth = backgroundStrokeWidth
             )
-            if (percentage != 0f) {
+            if (animatedValue != 0f) {
                 drawProgressArc(
                     radius = radius,
                     color = progressColor,
-                    curPercentage = curPercentage,
+                    progressValue = animatedValue,
                     progressStrokeWidth = progressStrokeWidth,
                     pointerColor = pointerColor,
+                    goalAchieved = animatedValue == goalValue
                 )
             }
         }
@@ -109,10 +111,11 @@ fun DrawScope.drawBackgroundCircle(
 fun DrawScope.drawProgressArc(
     radius: Dp,
     color: Color,
-    curPercentage: Float,
+    progressValue: Float,
     progressStrokeWidth: Dp,
     pointerWidth: Dp = progressStrokeWidth / 3,
     pointerColor: Color,
+    goalAchieved: Boolean,
 ) {
     val centerX = size.width / 2
     val centerY = size.height / 2
@@ -120,7 +123,7 @@ fun DrawScope.drawProgressArc(
     val startY = sin(Math.toRadians(-90.0)).toFloat() * radius.toPx() + centerY
 
     // ex) Math.toRadians(180) == 3.14(π)
-    val radians = Math.toRadians(360.0 * curPercentage - 90f)
+    val radians = Math.toRadians(360.0 * progressValue - 90f)
     val cos = cos(radians).toFloat() // radius-height ratio
     val sin = sin(radians).toFloat() // radius-hypotenuse ratio
     val px = cos * radius.toPx() + centerX
@@ -153,7 +156,7 @@ fun DrawScope.drawProgressArc(
     drawArc(
         color = color,
         startAngle = -90f,
-        sweepAngle = 360 * curPercentage,
+        sweepAngle = 360 * progressValue,
         useCenter = false,
         topLeft = Offset(startX, startY),
         size = Size(width = radius.toPx() * 2f, height = radius.toPx() * 2f),
@@ -163,15 +166,17 @@ fun DrawScope.drawProgressArc(
         )
     )
     // pointer
-    drawCircle(
-        color = pointerColor,
-        radius = 1f,
-        center = Offset(px, py),
-        style = Stroke(
-            width = pointerWidth.toPx(),
-            cap = StrokeCap.Round,
-        ),
-    )
+    if (goalAchieved.not()) {
+        drawCircle(
+            color = pointerColor,
+            radius = 1f,
+            center = Offset(px, py),
+            style = Stroke(
+                width = pointerWidth.toPx(),
+                cap = StrokeCap.Round,
+            ),
+        )
+    }
 }
 
 object EasyProgressDefaults {
@@ -189,7 +194,8 @@ private fun CanvasProgressScreen_Preview() {
         modifier = Modifier
             .size(200.dp)
             .padding(10.dp),
-        percentage = 0.7f,
-        onChangePercentage = {}
+        value = 70f,
+        goalValue = 100f,
+        onValueChanged = {}
     )
 }
