@@ -27,13 +27,16 @@ data class Screen(
 )
 
 enum class ScreenType {
+    // Compose
     BottomNavigation,
     TopTabsWithColumn,
     AutoSizingText,
     StickyHeader,
     PagingDemo,
-    ChartView,
-    ProgressView,
+    // Canvas
+    Chart,
+    CircularProgress,
+    // Smaple
     Unsplash,
     VerticalTimeline,
 }

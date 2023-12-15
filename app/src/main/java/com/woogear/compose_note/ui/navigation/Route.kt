@@ -14,7 +14,7 @@ import com.woogear.presentation.model.ScreenType
 import com.woogear.presentation.screen.category.CategoryArgs
 import com.woogear.presentation.screen.category.CategoryScreen
 import com.woogear.presentation.screen.category.canvas.chart.ChartScreen
-import com.woogear.presentation.screen.category.canvas.progress.CanvasProgressScreen
+import com.woogear.presentation.screen.category.canvas.progress.CircularCanvasProgressScreen
 import com.woogear.presentation.screen.category.compose.autosizingtext.AutoSizingTextScreen
 import com.woogear.presentation.screen.category.compose.bottomnav.BottomNavScreen
 import com.woogear.presentation.screen.category.compose.paging.PagingDemoScreen
@@ -79,12 +79,12 @@ sealed class Route(val routePath: String) {
                             }
 
                             // Canvas
-                            ScreenType.ChartView -> {
+                            ScreenType.Chart -> {
                                 navController.navigate(CanvasChart.getPath())
                             }
 
-                            ScreenType.ProgressView -> {
-                                navController.navigate(CanvasProgress.getPath())
+                            ScreenType.CircularProgress -> {
+                                navController.navigate(CircularCanvasProgress.getPath())
                             }
 
                             // Compose demo
@@ -183,12 +183,12 @@ sealed class Route(val routePath: String) {
         }
     }
 
-    object CanvasProgress : Route(routePath = "/canvas/progress") {
+    object CircularCanvasProgress : Route(routePath = "/canvas/circular_progress") {
         fun getPath() = routePath
 
-        fun NavGraphBuilder.canvasProgress(navController: NavController) {
+        fun NavGraphBuilder.circularCanvasProgress(navController: NavController) {
             composable(route = routePath) {
-                CanvasProgressScreen(
+                CircularCanvasProgressScreen(
                     modifier = Modifier.imePadding(),
                     onClickExit = navController::popBackStack
                 )

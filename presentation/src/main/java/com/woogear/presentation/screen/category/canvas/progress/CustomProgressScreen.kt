@@ -39,7 +39,7 @@ import com.woogear.presentation.theme.paletteBlue100
 
 @OptIn(ExperimentalTextApi::class)
 @Composable
-fun CanvasProgressScreen(
+fun CircularCanvasProgressScreen(
     modifier: Modifier = Modifier,
     onClickExit: () -> Unit,
 ) {
@@ -114,7 +114,7 @@ fun CanvasProgressScreen(
 )
 @Composable
 private fun CanvasProgressScreen_Preview() {
-    CanvasProgressScreen(
+    CircularCanvasProgressScreen(
         onClickExit = {}
     )
 }
