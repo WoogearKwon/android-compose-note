@@ -71,6 +71,12 @@ private val canvasDrawings = ScreenCategory(
             type = ScreenType.CircularProgress,
             backgroundColor = backgroundColors.random()
         ),
+        Screen(
+            titleRes = R.string.canvas_slider_title,
+            descriptionRes = R.string.canvas_slider_description,
+            type = ScreenType.GradientSlider,
+            backgroundColor = backgroundColors.random()
+        ),
     ),
     backgroundColor = backgroundColors.random()
 )

@@ -36,6 +36,7 @@ enum class ScreenType {
     // Canvas
     Chart,
     CircularProgress,
+    GradientSlider,
     // Smaple
     Unsplash,
     VerticalTimeline,

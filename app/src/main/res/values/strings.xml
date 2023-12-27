@@ -21,6 +21,8 @@
     <string name="canvas_chart_description">3 Types of Chart Component Draw on Canvas</string>
     <string name="canvas_progress_title">Canvas Progress</string>
     <string name="canvas_progress_description">Custom Canvas Progress View</string>
+    <string name="canvas_slider_title">Gradient Slider</string>
+    <string name="canvas_slider_description">Its thumb represents color on gradient</string>
 
     <!--demo-->
     <string name="compose_examples_title">Compose Examples</string>

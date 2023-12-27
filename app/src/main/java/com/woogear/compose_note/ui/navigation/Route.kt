@@ -15,6 +15,7 @@ import com.woogear.presentation.screen.category.CategoryArgs
 import com.woogear.presentation.screen.category.CategoryScreen
 import com.woogear.presentation.screen.category.canvas.chart.ChartScreen
 import com.woogear.presentation.screen.category.canvas.progress.CircularCanvasProgressScreen
+import com.woogear.presentation.screen.category.canvas.slider.GradientSliderScreen
 import com.woogear.presentation.screen.category.compose.autosizingtext.AutoSizingTextScreen
 import com.woogear.presentation.screen.category.compose.bottomnav.BottomNavScreen
 import com.woogear.presentation.screen.category.compose.paging.PagingDemoScreen
@@ -85,6 +86,10 @@ sealed class Route(val routePath: String) {
 
                             ScreenType.CircularProgress -> {
                                 navController.navigate(CircularCanvasProgress.getPath())
+                            }
+
+                            ScreenType.GradientSlider ->{
+                                navController.navigate(GradientSlider.getPath())
                             }
 
                             // Compose demo
@@ -189,6 +194,19 @@ sealed class Route(val routePath: String) {
         fun NavGraphBuilder.circularCanvasProgress(navController: NavController) {
             composable(route = routePath) {
                 CircularCanvasProgressScreen(
+                    modifier = Modifier.imePadding(),
+                    onClickExit = navController::popBackStack
+                )
+            }
+        }
+    }
+
+    object GradientSlider : Route(routePath = "/canvas/gradient_slider") {
+        fun getPath() = routePath
+
+        fun NavGraphBuilder.gradientSlider(navController: NavController) {
+            composable(route = routePath) {
+                GradientSliderScreen(
                     modifier = Modifier.imePadding(),
                     onClickExit = navController::popBackStack
                 )
